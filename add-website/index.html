@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="de">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>oberstufe.site</title>
+<link href="styles.css" rel="stylesheet"/>
+<link href="assets/staggered-menu.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="left">
+<a class="brand" href="index.html">oberstufe.site</a>
+</div>
+<nav class="nav">
+<a class="active" data-i18n="nav_home" href="index.html">Home</a>
+<a data-i18n="nav_pp" href="powerpoints.html">PowerPoints</a>
+<a data-i18n="nav_videos" href="videos.html">Videos</a>
+<a data-i18n="nav_games" href="spiele.html">Spiele</a>
+</nav>
+<div class="right">
+</div></div>
+
+
+<!-- Staggered Menu with Uiverse Burger + Inline Settings -->
+<div class="sm-wrap">
+<div class="sm-header-btn">
+<!-- From Uiverse.io by Cevorob -->
+<label aria-label="Menü öffnen/schließen" class="burger" for="burger">
+<input id="burger" type="checkbox"/>
+<span></span>
+<span></span>
+<span></span>
+</label>
+</div>
+<div class="sm-layers">
+<div class="sm-layer"></div>
+<div class="sm-layer"></div>
+</div>
+<aside aria-hidden="true" class="sm-panel">
+<div class="sm-head">
+<a class="sm-logo" href="index.html">oberstufe.site</a>
+</div>
+<ul class="sm-list" data-numbering="true">
+<li class="sm-item"><a aria-label="Zur Startseite" class="sm-link" data-idx="01" href="index.html">Home</a></li>
+<li class="sm-item"><a aria-label="Einstellungen umschalten" class="sm-link" data-idx="02" data-inline="settings" href="#">Einstellungen</a></li>
+<li class="sm-item"><a aria-label="Zum Admin-Login" class="sm-link" data-idx="03" href="admin/index.html">Admin Login</a></li>
+<li class="sm-item"><a aria-disabled="true" class="sm-link" data-idx="04" href="#">Coming Soon</a></li>
+</ul>
+<div aria-label="Einstellungen" class="sm-settings" data-open="false">
+<h3>Darstellung</h3>
+<div class="sm-setting-row">
+<input class="sm-switch" id="sm-theme-switch" type="checkbox">
+<label class="sm-setting-label" for="sm-theme-switch">Dark Mode</label>
+</input></div>
+</div>
+<div class="sm-socials">
+<a href="mailto:info@oberstufe.site">Gmail</a>
+<a href="https://docs.google.com" rel="noopener" target="_blank">Google Docs</a>
+</div>
+</aside>
+</div>
+<!-- /Staggered Menu -->
+</header>
+<main class="container">
+<section class="hero"><h1 data-i18n="add_title">Wie kann ich selbst ein Projekt hinzufügen?</h1><p data-i18n="add_sub">Es gibt verschiedene Möglichkeiten, dein Projekt bei uns einzubringen.</p></section>
+<section class="grid three">
+<article class="card card--plain card--soft"><h3 data-i18n="add_card1_h">Ansprechen in der Schule</h3><p data-i18n="add_card1_p">Sprich uns einfach in der Schule an – wir schauen gemeinsam, wie wir dein Projekt einbinden können.</p></article>
+<article class="card card--plain card--soft"><h3 data-i18n="add_card2_h">E-Mail schreiben</h3><p data-i18n="add_card2_p">Schick uns eine E-Mail mit deiner Idee – wir gucken dann, was wir tun können.</p><p class="project-note"><a href="mailto:oberstufesite@gmail.com" style="color:var(--link); font-weight:600;">oberstufesite@gmail.com</a></p></article>
+<article class="card card--plain card--soft"><h3 data-i18n="add_card3_h">Feedback-Formular</h3><p data-i18n="add_card3_p">Nutze unser Formular, wenn du uns Details schicken möchtest.</p><p class="project-note"><a href="https://docs.google.com/forms/d/e/1FAIpQLSc7hitAkvgDHXnOKgRpvolibMhm3iHeag_V-Azm4Mz8zef63w/viewform?usp=dialog" rel="noopener" style="color:var(--link); font-weight:600;" target="_blank">Zum Formular</a> – wähle <strong>„Sonstiges“</strong> und gib deinen <strong>Namen</strong> an.</p></article>
+</section>
+<section class="info"><h3 data-i18n="add_why_h">Warum mitmachen?</h3><p data-i18n="add_why_p">Du machst dein Projekt für jeden frei zugänglich – immer und jederzeit. Dabei sammelst du wertvolle Erfahrungen in Webentwicklung und Präsentation und kannst die Website auch nutzen, um eigene Projekte vorzustellen. Gleichzeitig trägst du dazu bei, unsere Sammlung stetig zu erweitern.</p></section>
+<a class="ghost" data-i18n="back_home" href="index.html" style="display:inline-block; margin-top:12px; color:var(--link);">← Zurück zur Startseite</a>
+</main>
+<footer>
+<div class="container footer-inner">
+<div class="footer-meta">© 2025 oberstufe.site – v2.38a</div>
+<a class="cta-button" data-i18n="cta_add" href="add-website.html">Projekt hinzufügen</a>
+<div class="qr-in-footer" id="qrBlock" title="QR-Code">
+<div class="share-label">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M7 17l5-5 5 5"></path><path d="M12 12v2.38a"></path></svg>
+<span data-i18n="share_site">Teile diese Website!</span>
+</div>
+<img alt="QR-Code" src="qr-placeholder.jpg"/>
+</div>
+</div>
+</footer>
+<div class="overlay-backdrop" id="overlayGlobal"></div>
+<div aria-labelledby="settingsTitle" aria-modal="true" class="modal" id="modalSettings" role="dialog">
+<div class="modal-header">
+<h3 data-i18n="settings_title" id="settingsTitle">Einstellungen</h3>
+<button class="btn" id="closeSettings">Schließen</button>
+</div>
+<div class="modal-body">
+<div class="row-setting">
+<span data-i18n="set_theme">Theme</span>
+<div aria-label="Theme" class="icon-toggle" role="group">
+<button aria-pressed="false" class="icon-btn" id="themeLight" title="Hell">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="5"></circle><line x1="12" x2="12" y1="1" y2="3"></line><line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="12" y2="12"></line><line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+</button>
+<button aria-pressed="false" class="icon-btn" id="themeDark" title="Dunkel">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+</svg>
+</button>
+</div>
+</div>
+<div class="row-setting">
+<span data-i18n="set_lang">Sprache</span>
+<div>
+<button class="btn" id="langDe" style="margin-right:6px;">DE</button>
+<button class="btn" id="langEn">EN</button>
+</div>
+</div>
+</div>
+</div>
+
+<div aria-labelledby="changelogTitle" aria-modal="true" class="modal" id="modalChangelog" role="dialog">
+<div class="modal-header"><h3 id="changelogTitle">Changelog</h3><button class="btn" id="closeChangelog">Schließen</button>
+<ul><li>v2.14 – Navigation verbessert, Menü überarbeitet (21.09.2025)</li><li>v2.15 – Darkmode eingeführt (21.09.2025)</li><li>v2.16 – Footer überarbeitet (21.09.2025)</li><li>v2.17 – Scroll-Up Button eingefügt (21.09.2025)</li><li>v2.18 – Header/Navi Bugfixes (21.09.2025)</li><li>v2.19 – Design-Optimierungen, Animationen (21.09.2025)</li><li>v2.20 – Farbpalette angepasst (21.09.2025)</li><li>v2.21 – Changelog hinzugefügt (21.09.2025)</li><li>v2.22 – Kleine Layout-Fixes (21.09.2025)</li><li>v2.23 – Neue Version bereitgestellt (21.09.2025)</li><li>v2.24 – Bugfix Scroll-Up Button (21.09.2025)</li><li>v2.25 – Feedback Button hinzugefügt (21.09.2025)</li><li>v2.26 – Korrektur Scroll-Button Verhalten (21.09.2025)</li><li>v2.27 – Chips Design begonnen (21.09.2025)</li><li>v2.28 – Chips farbig (erste Version) (21.09.2025)</li><li>v2.29 – Chips Bugfix (korrekte Farben) (21.09.2025)</li><li>v2.30 – Chips Variante A umgesetzt (21.09.2025)</li><li>v2.31 – Chips Farben in allen Fächern gefixt (21.09.2025)</li><li>v2.32 – Dark Mode Kontrast &amp; Elemente verbessert (21.09.2025)</li><li>v2.33 – Dark Mode Navy + Beige Akzente (21.09.2025)</li><li>v2.34 – Dark Mode Palette #222831/#393E46/#948979/#DFD0B8 (21.09.2025)</li><li>v2.35 – Dark Mode: Titel Anthrazit (21.09.2025)</li><li>v2.36 – Interne Robustheit verbessert (21.09.2025)</li><li>v2.37 – Listener/JS-Struktur bereinigt (21.09.2025)</li><li>v2.38 – Finales Update vor 2.38a Release (21.09.2025)</li></ul>
+</div>
+<div class="modal-body">
+<ul style="list-style:none; padding:0; margin:0;">
+<li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v1.0 – 18.09.2025</span> · Erste Veröffentlichung der Homepage</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#22C55E;">Erweiterungen – 18.09.2025</span> · Philexikon &amp; Pieter Bruegel integriert</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.0 – 18.09.2025</span> · Überarbeitetes Design</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.1 – 18.09.2025</span> · Feinschliff</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.2 – 19.09.2025</span> · Wiener Kongress, Suche &amp; Tags</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.4 – 20.09.2025</span> · QR im Footer, CTA, Design-Fixes</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#6B7280;">v2.6 – 20.09.2025</span> · Farben wie 12.4, FAQ-Akzente, Menü-Align Fix</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#22C55E;">v2.7 – 20.09.2025</span> · PowerPoints &amp; Videos, Share-Hinweis, Header-Navigation</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#22C55E;">v2.7e – 20.09.2025</span> · Komplettpaket (alle Unterseiten), PPT-Downloads vorbereitet</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.8 – 20.09.2025</span> · Fächer-Abschnitte (PP), DE/EN, QR-Option, „Unsere Websites“</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#22C55E;">v2.8a – 20.09.2025</span> · PP-Chips als Tags, Add-Seite 3 Spalten</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#6B7280;">v2.8b – 20.09.2025</span> · Bugfix: getrennte Seiten, saubere Header/Footer</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#6B7280;">v2.8c – 20.09.2025</span> · Bugfix: kein Zusammenkleben der Seiten</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#6B7280;">v2.8d – 20.09.2025</span> · Einstellungen repariert, Chips hübscher, CTA auf Add-Seite ausgeblendet</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.9 – 20.09.2025</span> · Changelog-Overlay, Dark Mode verbessert, Chips Variante A, Legende &amp; Sprache gefixt</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.10 – 20.09.2025</span> · Hamburger-Icon (3 Striche) &amp; Bugfixes; neue Fachfarben</li>
+<li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.11 – 20.09.2025</span> · Menü-Overlays (Kontakt/Changelog/Legende/Einstellungen), Theme-Switch mit SVG-Sonne/Mond, vollständige DE/EN, Fachfarben fix</li>
+</ul>
+</div>
+</div>
+<div aria-labelledby="legendTitle" aria-modal="true" class="modal" id="modalLegend" role="dialog">
+<div class="modal-header"><h3 id="legendTitle">Legende</h3><button class="btn" id="closeLegend">Schließen</button></div>
+<div class="modal-body">
+<h4 style="margin:10px 0 6px">Tags</h4>
+<p>Farbige Schlagworte geben die Fachbereiche an:</p>
+<div class="legend-tags">
+<span class="tag chemie">Chemie</span>
+<span class="tag deutsch">Deutsch</span>
+<span class="tag erdkunde">Erdkunde</span>
+<span class="tag geschichte">Geschichte</span>
+<span class="tag informatik">Informatik</span>
+<span class="tag kunst">Kunst</span>
+<span class="tag mathe">Mathe</span>
+<span class="tag physik">Physik</span>
+<span class="tag philosophie">Philosophie</span>
+<span class="tag sowi">SoWi</span>
+<span class="tag sport">Sport</span>
+</div>
+<h4 style="margin:16px 0 6px">Status‑Badges</h4>
+<p>Zeigen den aktuellen Stand eines Projekts:</p>
+<div class="legend-status">
+<span class="status green">Fertig</span>
+<span class="status yellow">In Arbeit</span>
+<span class="status red">Test</span>
+<span class="status blue">Coming Soon</span>
+</div>
+<ul class="legend-list">
+<ul class="status-list">
+<li class="status-item"><span class="status green">Fertig</span><span class="name">Fertig</span><span class="desc">Projekt/Präsentation ist abgeschlossen.</span></li>
+<li class="status-item"><span class="status yellow">In Arbeit</span><span class="name">In Arbeit</span><span class="desc">Inhalte werden noch erstellt oder überarbeitet.</span></li>
+<li class="status-item"><span class="status red">Test</span><span class="name">Test</span><span class="desc">Entwurf oder Beta; kann Fehler enthalten.</span></li>
+<li class="status-item"><span class="status blue">Coming Soon</span><span class="name">Coming Soon</span><span class="desc">Geplant, aber noch nicht veröffentlicht.</span></li>
+</ul>
+</ul>
+</div>
+</div>
+
+<div aria-labelledby="contactTitle" aria-modal="true" class="modal" id="modalContact" role="dialog">
+<div class="modal-header"><h3 data-i18n="contact_title" id="contactTitle">Kontakt</h3><button class="btn" id="closeContact">Schließen</button></div>
+<div class="modal-body">
+<p><strong>E-Mail:</strong> <a class="link" href="mailto:oberstufesite@gmail.com">oberstufesite@gmail.com</a></p>
+<p><a class="btn primary" data-i18n="contact_form" href="https://docs.google.com/forms/d/e/1FAIpQLSc7hitAkvgDHXnOKgRpvolibMhm3iHeag_V-Azm4Mz8zef63w/viewform?usp=dialog" rel="noopener" target="_blank">Zum Feedback-Formular</a></p>
+</div>
+</div>
+<a class="feedback-btn" data-i18n="feedback" href="https://docs.google.com/forms/d/e/1FAIpQLSc7hitAkvgDHXnOKgRpvolibMhm3iHeag_V-Azm4Mz8zef63w/viewform?usp=dialog" id="feedbackBtn" rel="noopener" target="_blank">Feedback</a>
+<button aria-label="Nach oben scrollen" class="to-top" id="toTopBtn" title="Nach oben"><svg aria-hidden="true" height="22" viewbox="0 0 48 48" width="22"><circle cx="24" cy="24" fill="none" r="17" stroke="rgba(255,255,255,.65)" stroke-width="2"></circle><path d="M16 26l8-8 8 8" fill="none" stroke="#2563EB" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path></svg></button>
+
+
+
+
+
+
+
+<!-- Netlify Identity (login status only) -->
+
+
+
+<script>
+/* v2.17 theme js */
+(function(){
+  const themeLight=document.getElementById('themeLight');
+  const themeDark=document.getElementById('themeDark');
+  function setTheme(next){
+    document.documentElement.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next);}catch(e){}
+    if(themeLight) themeLight.classList.toggle('active', next==='light');
+    if(themeDark) themeDark.classList.toggle('active', next==='dark');
+  }
+  const saved=localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light');
+  setTheme(saved);
+  themeLight && themeLight.addEventListener('click', ()=> setTheme('light'));
+  themeDark && themeDark.addEventListener('click', ()=> setTheme('dark'));
+})();
+</script><script>
+/* v2.26 unified scroll visibility */
+(function(){
+  const toTopBtn = document.getElementById('toTopBtn');
+  const feedbackBtn = document.getElementById('feedbackBtn');
+  function sync(){
+    const y = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const show = y > 160;
+    if(toTopBtn) toTopBtn.classList.toggle('show', show);
+    if(feedbackBtn) feedbackBtn.classList.toggle('show', show);
+  }
+  window.addEventListener('scroll', sync, {passive:true});
+  sync();
+  if(toTopBtn){
+    toTopBtn.addEventListener('click', function(){
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+})();
+</script><script>
+/* v2.37 – Language listeners harden */
+(function(){
+  function safeApply(lang){
+    if (typeof applyI18N === 'function') { applyI18N(lang); }
+  }
+  var langDeBtn = document.getElementById('langDe');
+  var langEnBtn = document.getElementById('langEn');
+  if(langDeBtn){ langDeBtn.onclick = function(){ safeApply('de'); }; }
+  if(langEnBtn){ langEnBtn.onclick = function(){ safeApply('en'); }; }
+})();
+</script><script>
+// v2.41a helpers
+(function(){
+  // Title anthracite on index & 200
+  try{
+    var h1 = document.querySelector('h1');
+    if(h1 && /Willkommen auf oberstufe\.site/i.test(h1.textContent)){
+      h1.classList.add('site-title','title-anthrazit');
+    }
+  }catch(e){}
+
+  // Mark feedback card to color links blue
+  try{
+    document.querySelectorAll('.card, section, div').forEach(function(el){
+      if(/Kann ich Feedback geben oder Ideen einreichen\?/i.test(el.textContent)){
+        // add class to closest card-like container
+        var target = el.closest('.card') || el;
+        target.classList.add('feedback-card');
+      }
+    });
+  }catch(e){}
+})();
+</script><script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script><script>// v2.52 – menu toggle (no overlay), modals use overlay
+(function(){
+  const btn = document.getElementById('menuBtn');
+  const list = document.getElementById('menuList');
+  const overlay = document.getElementById('overlayGlobal');
+  if(!btn || !list) return;
+
+  function openMenu(){
+    list.classList.add('open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+  }
+  function closeMenu(){
+    list.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded','false');
+  }
+  function toggleMenu(){ list.classList.contains('open') ? closeMenu() : openMenu(); }
+
+  btn.addEventListener('click', (e)=>{ e.stopPropagation(); toggleMenu(); });
+  document.addEventListener('click', (e)=>{
+    if(!list.contains(e.target) && !btn.contains(e.target)) closeMenu();
+  });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
+
+  // Modal helpers use overlay
+  const hook=(id, fn)=>{ const el=document.getElementById(id); if(el) el.addEventListener('click', fn); };
+  const openModal=(id)=>{ const m=document.getElementById(id); if(m){ m.classList.add('open'); overlay && overlay.classList.add('show'); closeMenu(); } };
+  const closeModal=(id)=>{ const m=document.getElementById(id); if(m){ m.classList.remove('open'); overlay && overlay.classList.remove('show'); } };
+
+  hook('menuOpenSettings', ()=> openModal('modalSettings'));
+  hook('menuOpenChangelog', ()=> openModal('modalChangelog'));
+  hook('menuOpenLegend',   ()=> openModal('modalLegend'));
+  hook('menuOpenContact',  ()=> openModal('modalContact'));
+
+  hook('closeSettings', ()=> closeModal('modalSettings'));
+  hook('closeChangelog', ()=> closeModal('modalChangelog'));
+  hook('closeLegend', ()=> closeModal('modalLegend'));
+  hook('closeContact', ()=> closeModal('modalContact'));
+
+  overlay && overlay.addEventListener('click', ()=>{
+    closeModal('modalSettings'); closeModal('modalChangelog'); closeModal('modalLegend'); closeModal('modalContact');
+  });
+})();
+</script><script>
+// v2.56 – minimal toggle fallback
+(function(){
+  const btn = document.getElementById('menuBtn');
+  const list = document.getElementById('menuList');
+  if(!btn || !list) return;
+  const open = ()=>{ list.classList.add('open'); btn.classList.add('open'); btn.setAttribute('aria-expanded','true'); };
+  const close = ()=>{ list.classList.remove('open'); btn.classList.remove('open'); btn.setAttribute('aria-expanded','false'); };
+  const toggle = ()=> list.classList.contains('open') ? close() : open();
+  btn.addEventListener('click', (e)=>{ e.stopPropagation(); toggle(); });
+  document.addEventListener('click', (e)=>{ if(!list.contains(e.target) && !btn.contains(e.target)) close(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+})();
+</script><script>
+// v2.58 – global modal open/close fallback
+(function(){
+  if(!window._openModal){
+    window._openModal = function(id){
+      var m=document.getElementById(id);
+      var overlay=document.getElementById('overlayGlobal');
+      if(m){ m.classList.add('open'); }
+      if(overlay){ overlay.classList.add('show'); }
+      var btn=document.getElementById('menuBtn'); var list=document.getElementById('menuList');
+      if(list && list.classList.contains('open')){ list.classList.remove('open'); btn && btn.classList.remove('open'); }
+    };
+  }
+  if(!window._closeModal){
+    window._closeModal = function(id){
+      var m=document.getElementById(id);
+      var overlay=document.getElementById('overlayGlobal');
+      if(m){ m.classList.remove('open'); }
+      if(overlay){ overlay.classList.remove('show'); }
+    };
+  }
+})();
+</script><script>
+/* v2.59 – Hamburger Menü (neu codiert) */
+(function(){
+  const btn = document.getElementById('menuBtn');
+  const list = document.getElementById('menuList');
+  const overlay = document.getElementById('overlayGlobal');
+  if(!btn || !list) return;
+
+  function openMenu(){
+    list.classList.add('open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+  }
+  function closeMenu(){
+    list.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded','false');
+  }
+  function toggleMenu(){ list.classList.contains('open') ? closeMenu() : openMenu(); }
+
+  btn.addEventListener('click', (e)=>{ e.stopPropagation(); toggleMenu(); });
+  document.addEventListener('click', (e)=>{ if(!list.contains(e.target) && !btn.contains(e.target)) closeMenu(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeMenu(); });
+
+  function openModalById(id){
+    const m = document.getElementById(id);
+    if(!m) return;
+    m.classList.add('open');
+    if(overlay) overlay.classList.add('show');
+    closeMenu();
+  }
+
+  list.querySelectorAll('[data-modal]').forEach(a=>{
+    a.addEventListener('click', (e)=>{ e.preventDefault(); openModalById(a.getAttribute('data-modal')); });
+  });
+
+  window._openModal = window._openModal || openModalById;
+})();
+</script><script>
+// v2.70 Menu + Modals + Theme
+(function(){
+  const btn = document.getElementById('menuBtn');
+  const list = document.getElementById('menuList');
+  const overlay = document.getElementById('overlayGlobal');
+
+  function openMenu(){ if(list){ list.classList.add('open'); } if(btn){ btn.classList.add('open'); btn.setAttribute('aria-expanded','true'); } }
+  function closeMenu(){ if(list){ list.classList.remove('open'); } if(btn){ btn.classList.remove('open'); btn.setAttribute('aria-expanded','false'); } }
+
+  btn && btn.addEventListener('click', (e)=>{ e.stopPropagation(); list && (list.classList.contains('open')?closeMenu():openMenu()); });
+
+  document.addEventListener('click', (e)=>{
+    if(list && !list.contains(e.target) && !btn.contains(e.target)) closeMenu();
+  });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeMenu(); closeAllModals(); }});
+
+  // Modals
+  const modals = Array.from(document.querySelectorAll('.modal'));
+  function closeAllModals(){ modals.forEach(m=>m.classList.remove('open')); overlay && overlay.classList.remove('show'); }
+  function openModal(id){ closeMenu(); const m=document.getElementById(id); if(m){ m.classList.add('open'); overlay && overlay.classList.add('show'); } }
+
+  document.querySelectorAll('#menuList [data-modal]').forEach(el=>{
+    el.addEventListener('click', ()=> openModal(el.getAttribute('data-modal')));
+  });
+  overlay && overlay.addEventListener('click', closeAllModals);
+  document.querySelectorAll('[data-close]').forEach(x=> x.addEventListener('click', closeAllModals));
+
+  // Theme
+  function setTheme(next){
+    document.documentElement.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next);}catch(e){}
+    const tL=document.getElementById('themeLight'); const tD=document.getElementById('themeDark');
+    tL && tL.classList.toggle('active', next==='light');
+    tD && tD.classList.toggle('active', next==='dark');
+  }
+  const saved = (function(){
+    try{ return localStorage.getItem('theme'); }catch(e){ return null; }
+  })() || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light');
+  setTheme(saved);
+
+  const tL=document.getElementById('themeLight'); const tD=document.getElementById('themeDark');
+  tL && tL.addEventListener('click', ()=> setTheme('light'));
+  tD && tD.addEventListener('click', ()=> setTheme('dark'));
+})();
+</script><script>
+// v2.61 – Client-side search minimal (no counter, no layout shift)
+(function(){
+  const input = document.getElementById('searchInput');
+  if(!input) return;
+  function norm(t){ return (t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+  function items(){ return Array.from(document.querySelectorAll('.card')); }
+  function matches(el, q){
+    if(!q) return true;
+    const hay = norm(el.textContent);
+    const tags = (el.getAttribute('data-tags')||'') + ' ' + (el.getAttribute('data-tag')||'');
+    return hay.includes(q) || norm(tags).includes(q);
+  }
+  function apply(q){
+    const qn = norm(q);
+    items().forEach(el=>{ el.style.display = matches(el, qn) ? '' : 'none'; });
+  }
+  input.addEventListener('input', ()=> apply(input.value));
+  document.addEventListener('keydown', (e)=>{ if((e.ctrlKey||e.metaKey) && (e.key==='k'||e.key==='K')){ e.preventDefault(); input.focus(); }});
+})();
+</script><script src="assets/staggered-menu.js"></script><script>
+(function(){
+  function statusBtnHTML(status){
+    const map={ fertig:['Fertig','status-done'], in_arbeit:['In Arbeit','status-wip'], test:['Test','status-test'], coming_soon:['Coming Soon','status-soon'] };
+    const x=map[status]; return x ? `<span class="status-btn ${x[1]}">${x[0]}</span>` : '';
+  }
+  function tagPill(tag){
+    if(!tag) return '';
+    const label = (tag==='sowi' ? 'SoWi' : tag.charAt(0).toUpperCase()+tag.slice(1));
+    return `<span class="pill-tag tag-${tag}">${label}</span>`;
+  }
+  function cardHTML(c){
+    const tag=(c.tag||'').toLowerCase();
+    const authorsStr = Array.isArray(c.authors)
+      ? c.authors.map(a => (a && a.name) ? a.name : a).join(', ')
+      : (c.authors || '');
+    return `<div class="card card--${tag}">
+      ${c.image_url ? `<img class="card-thumb" src="${c.image_url}" alt="">` : ''}
+      <h3>${c.title||''}</h3>
+      ${c.subtitle ? `<p class="muted">${c.subtitle}</p>` : ''}
+      ${authorsStr ? `<p class="card-authors muted">${authorsStr}</p>` : ''}
+      <div class="row-tags"><div class="left">${tagPill(tag)}</div></div>
+      <div class="actions"><a class="btn btn-primary" href="${c.url||'#'}" target="_blank" rel="noopener">Öffnen</a>${statusBtnHTML(c.status)}</div>
+    </div>`;
+  }
+  async function loadCards(){
+    const r = await fetch('/data/cards.json',{cache:'no-cache'});
+    const d = await r.json();
+    return (d.cards||[]).filter(c=> c.is_published !== false);
+  }
+  function renderWebsites(cards){
+    const grid=document.getElementById('websitesGrid'); if(!grid) return;
+    const items=cards.filter(c=> (c.page||'')==='home');
+    grid.innerHTML = items.map(cardHTML).join('');
+  
+      if(window.attachCardObserver){ window.attachCardObserver(); }
+}
+  document.addEventListener('DOMContentLoaded', async ()=>{
+    try{
+      const cards = await loadCards();
+      renderWebsites(cards);
+    }catch(e){
+      console.error('Fehler beim Laden der Karten:', e);
+    }
+  });
+})();
+</script><script>
+document.addEventListener('DOMContentLoaded', ()=>{
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  cards.forEach(card => observer.observe(card));
+});
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script><script>
+// Split & Animate H1 on homepage (no external plugins)
+(function(){
+  const h1 = document.querySelector('h1');
+  if(!h1) return;
+  const text = h1.textContent;
+  h1.setAttribute('aria-label', text);
+  h1.innerHTML = '';
+  const frag = document.createDocumentFragment();
+  for(const ch of text){
+    const span = document.createElement('span');
+    span.className = 'split-char';
+    if(ch === ' ') { span.innerHTML = '&nbsp;'; } else { span.textContent = ch; }
+    span.style.display = 'inline-block';
+    span.style.opacity = '0';
+    span.style.transform = 'translateY(40px)';
+    frag.appendChild(span);
+  }
+  h1.appendChild(frag);
+  // Animate with GSAP if available, else fallback CSS
+  function run(){
+    if(window.gsap && h1.querySelectorAll('.split-char').length){
+      gsap.to(h1.querySelectorAll('.split-char'), {
+        opacity: 1,
+        y: 0,
+        duration: 0.4,
+        ease: 'power3.out',
+        stagger: 0.05
+      });
+    }else{
+      // simple fallback
+      h1.querySelectorAll('.split-char').forEach((el,i)=>{
+        setTimeout(()=>{ el.style.opacity='1'; el.style.transform='none'; }, 40*i);
+      });
+    }
+  }
+  if(document.readyState==='complete') run();
+  else window.addEventListener('load', run);
+})();
+</script><script>
+// Robust re-render to ensure cards show even if another script failed
+(function(){
+  function showGridError(msg){
+    var grid = document.getElementById('websitesGrid');
+    if(grid){ grid.innerHTML = '<div class="muted" style="padding:12px 0">'+msg+'</div>'; }
+  }
+  function tagPill(tag){
+    if(!tag) return '';
+    var label = (tag==='sowi' ? 'SoWi' : tag.charAt(0).toUpperCase()+tag.slice(1));
+    return '<span class="pill-tag tag-'+tag+'">'+label+'</span>';
+  }
+  function statusBtnHTML(status){
+    var map = { fertig:['Fertig','status-done'], in_arbeit:['In Arbeit','status-wip'], test:['Test','status-test'], coming_soon:['Coming Soon','status-soon'] };
+    var x = map[status]; return x ? '<span class="status-btn '+x[1]+'">'+x[0]+'</span>' : '';
+  }
+  function cardHTML(c){
+    var tag=(c.tag||'').toLowerCase();
+    var authorsStr = Array.isArray(c.authors) ? c.authors.map(function(a){ return (a && a.name)?a.name:a; }).join(', ') : (c.authors||'');
+    return '<div class="card card--'+tag+'">'+
+      (c.image_url?'<img class="card-thumb" src="'+c.image_url+'" alt="">':'')+
+      '<h3>'+(c.title||'')+'</h3>'+
+      (c.subtitle?'<p class="muted">'+c.subtitle+'</p>':'')+
+      (authorsStr?'<p class="card-authors muted">'+authorsStr+'</p>':'')+
+      '<div class="row-tags"><div class="left">'+tagPill(tag)+'</div></div>'+
+      '<div class="actions"><a class="btn btn-primary" href="'+(c.url||'#')+'" target="_blank" rel="noopener">Öffnen</a>'+statusBtnHTML(c.status)+'</div>'+
+    '</div>';
+  }
+  function renderHome(cards){
+    var grid = document.getElementById('websitesGrid'); if(!grid) return;
+    var items = (cards||[]).filter(function(c){ return ((c.page||'').trim().toLowerCase()==='home') && (c.is_published!==false); });
+    if(!items.length){
+      showGridError('Keine Karten gefunden. Prüfe /data/cards.json und ob "page": "home" gesetzt ist.');
+      return;
+    }
+    grid.innerHTML = items.map(cardHTML).join('');
+  
+      if(window.attachCardObserver){ window.attachCardObserver(); }
+}
+  async function safeLoad(){
+    try{
+      var res = await fetch('/data/cards.json', { cache:'no-cache' });
+      var txt = await res.text();
+      if (/^\s*</.test(txt)) throw new Error('cards.json lieferte HTML statt JSON – Pfad/Rewrite prüfen.');
+      var data = JSON.parse(txt);
+      var arr = Array.isArray(data.cards) ? data.cards : [];
+      renderHome(arr);
+    }catch(e){
+      console.error('[robust] Fehler:', e);
+      showGridError('Fehler beim Laden der Karten: '+e.message);
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', safeLoad);
+  }else{
+    safeLoad();
+  }
+})();
+</script><script>
+// Attach IntersectionObserver after render for smooth fade-in
+(function(){
+  function attachCardObserver(){
+    try {
+      var cards = document.querySelectorAll('#websitesGrid .card');
+      if(!cards.length) return;
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+      cards.forEach(function(c){ io.observe(c); });
+    } catch(e){
+      // Fallback: make all visible if IO not supported
+      requestAnimationFrame(function(){
+        document.querySelectorAll('#websitesGrid .card').forEach(function(el){ el.classList.add('visible'); });
+      });
+    }
+  }
+  // Expose globally
+  window.attachCardObserver = attachCardObserver;
+})();
+</script></body>
+</html>

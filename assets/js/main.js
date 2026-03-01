@@ -1,139 +1,148 @@
-/* =========================================================
-   oberstufe.site – Gemeinsame JS-Utilities v3.0
-   ========================================================= */
+/* oberstufe.site v3.5 – main.js */
 
-// ── Theme ──────────────────────────────────────────────────
-(function () {
-  const stored = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const theme = stored || (prefersDark ? 'dark' : 'light');
-  document.documentElement.setAttribute('data-theme', theme);
+// Scroll progress
+(function(){
+  const bar = document.getElementById('scrollProgress');
+  if(!bar) return;
+  window.addEventListener('scroll', ()=>{
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (window.scrollY / total * 100) + '%';
+  }, {passive:true});
 })();
 
-document.addEventListener('DOMContentLoaded', () => {
-
-  // Theme Toggle
-  const themeBtn = document.getElementById('themeToggle');
-  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-
-  function setTheme(t) {
-    document.documentElement.setAttribute('data-theme', t);
-    localStorage.setItem('theme', t);
-    if (mobileThemeToggle) mobileThemeToggle.checked = t === 'dark';
-  }
-
-  if (themeBtn) {
-    themeBtn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      setTheme(current === 'dark' ? 'light' : 'dark');
-    });
-  }
-  if (mobileThemeToggle) {
-    // Sync initial state
-    mobileThemeToggle.checked = document.documentElement.getAttribute('data-theme') === 'dark';
-    mobileThemeToggle.addEventListener('change', () => {
-      setTheme(mobileThemeToggle.checked ? 'dark' : 'light');
-    });
-  }
-
-  // ── Mobile Nav ──────────────────────────────────────────
-  const burgerBtn = document.getElementById('burgerBtn');
-  const mobileNav = document.getElementById('mobileNav');
-  const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
-  const mobileNavClose = document.getElementById('mobileNavClose');
-
-  function openMobileNav() {
-    mobileNav && mobileNav.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMobileNav() {
-    mobileNav && mobileNav.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  burgerBtn && burgerBtn.addEventListener('click', openMobileNav);
-  mobileNavOverlay && mobileNavOverlay.addEventListener('click', closeMobileNav);
-  mobileNavClose && mobileNavClose.addEventListener('click', closeMobileNav);
-
-  // Escape key closes nav
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMobileNav();
+// Mobile nav
+(function(){
+  const btn = document.getElementById('burgerBtn');
+  const nav = document.getElementById('mobileNav');
+  if(!btn || !nav) return;
+  btn.addEventListener('click', ()=>{
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
   });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') nav.classList.remove('open'); });
+})();
 
-  // ── Back to Top ─────────────────────────────────────────
-  const toTopBtn = document.getElementById('toTop');
-  if (toTopBtn) {
-    window.addEventListener('scroll', () => {
-      toTopBtn.classList.toggle('show', window.scrollY > 400);
-    });
-    toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }
+// Back to top
+(function(){
+  const btn = document.getElementById('toTop');
+  if(!btn) return;
+  window.addEventListener('scroll', ()=>{
+    btn.classList.toggle('show', window.scrollY > 200);
+  }, {passive:true});
+  btn.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+})();
 
-  // ── Keyboard Shortcut Ctrl/Cmd+K → Fokus Search ─────────
-  document.addEventListener('keydown', (e) => {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-      e.preventDefault();
-      const searchInput = document.getElementById('searchInput');
-      if (searchInput) searchInput.focus();
-    }
-    // "/" öffnet Suche (falls nicht in einem Input)
-    if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-      e.preventDefault();
-      const searchInput = document.getElementById('searchInput');
-      if (searchInput) searchInput.focus();
-    }
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click', ()=>{
+    const item = q.parentElement;
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!open) item.classList.add('open');
   });
-
-  // ── FAQ Accordion ────────────────────────────────────────
-  document.querySelectorAll('.faq-item').forEach(item => {
-    const q = item.querySelector('.faq-q');
-    if (q) {
-      q.addEventListener('click', () => {
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
-      });
-    }
-  });
-
-  // ── Card IntersectionObserver (fade-in) ──────────────────
-  window.attachCardObserver = function () {
-    const cards = document.querySelectorAll('.card:not(.visible)');
-    if (!cards.length) return;
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-    cards.forEach(c => io.observe(c));
-  };
-
 });
 
-// ── Toast Utility (global) ──────────────────────────────────
-window.showToast = function (msg, type = 'default', duration = 3000) {
-  let container = document.querySelector('.toast-container');
-  if (!container) {
-    container = document.createElement('div');
-    container.className = 'toast-container';
-    document.body.appendChild(container);
-  }
-  const icons = {
-    default: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>`,
-    success: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>`,
-    error: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>`,
-  };
-  const toast = document.createElement('div');
-  toast.className = 'toast';
-  if (type === 'success') toast.style.background = 'var(--green)';
-  if (type === 'error') toast.style.background = 'var(--red)';
-  toast.innerHTML = `${icons[type] || icons.default}<span>${msg}</span>`;
-  container.appendChild(toast);
-  setTimeout(() => {
-    toast.classList.add('toast-exit');
-    toast.addEventListener('animationend', () => toast.remove());
-  }, duration);
+// IntersectionObserver for cards
+window.attachCardObserver = function(){
+  const cards = document.querySelectorAll('.card');
+  if(!cards.length) return;
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach((entry, i)=>{
+      if(entry.isIntersecting){
+        entry.target.style.animationDelay = (i * 0.05) + 's';
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.1});
+  cards.forEach(c=>io.observe(c));
 };
+
+// Search
+(function(){
+  const input = document.getElementById('searchInput');
+  if(!input) return;
+  function norm(t){ return (t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+  let timer;
+  input.addEventListener('input', ()=>{
+    clearTimeout(timer);
+    timer = setTimeout(()=>{
+      const q = norm(input.value);
+      document.querySelectorAll('.card').forEach(c=>{
+        c.style.display = norm(c.textContent).includes(q) ? '' : 'none';
+      });
+    }, 200);
+  });
+  document.addEventListener('keydown', e=>{
+    if((e.metaKey||e.ctrlKey) && e.key==='k'){ e.preventDefault(); input.focus(); }
+  });
+})();
+
+// Sort
+(function(){
+  const sel = document.getElementById('sortSelect');
+  const grid = document.getElementById('cardGrid') || document.getElementById('pageGrid');
+  if(!sel || !grid) return;
+  sel.addEventListener('change', ()=>{
+    const cards = Array.from(grid.querySelectorAll('.card'));
+    if(sel.value === 'az'){
+      cards.sort((a,b)=> a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent));
+    } else if(sel.value === 'neu'){
+      cards.sort((a,b)=> (b.dataset.created||'').localeCompare(a.dataset.created||''));
+    }
+    cards.forEach(c=>grid.appendChild(c));
+  });
+})();
+
+// Card loader from cards.json
+(function(){
+  const grid = document.getElementById('cardGrid') || document.getElementById('pageGrid');
+  const page = document.body.dataset.page;
+  if(!grid || !page) return;
+
+  function tagLabel(tag){ return tag==='sowi'?'SoWi': tag?tag.charAt(0).toUpperCase()+tag.slice(1):''; }
+  function statusLabel(s){ return {fertig:'Fertig',in_arbeit:'In Arbeit',test:'Test',coming_soon:'Coming Soon'}[s]||s; }
+  function bgLabel(tag){ const m={philosophie:'Ph',geschichte:'Ge',kunst:'Ku',physik:'Ph',chemie:'Ch',mathe:'Ma',erdkunde:'Ek',deutsch:'De',informatik:'It',sport:'Sp',sowi:'So'}; return m[tag]||''; }
+
+  function cardHTML(c){
+    const tag=(c.tag||'').toLowerCase();
+    const authors = Array.isArray(c.authors)?c.authors.join(', '):(c.authors||'');
+    const created = c.created_at||'';
+    const isNew = created && (Date.now()-new Date(created).getTime()<1000*60*60*24*14);
+    return `<div class="card card--${tag}" data-created="${created}">
+      <div class="card-bar"></div>
+      <div class="card-bg-label">${bgLabel(tag)}</div>
+      ${isNew?'<div class="card-new-badge">Neu</div>':''}
+      <div class="card-inner">
+        <div class="card-meta">
+          ${tag?`<span class="pill tag-${tag}">${tagLabel(tag)}</span>`:''}
+          <span class="status status-${c.status}">${statusLabel(c.status)}</span>
+        </div>
+        <h3>${c.title||''}</h3>
+        ${c.subtitle?`<p>${c.subtitle}</p>`:''}
+        ${authors?`<p class="card-authors">${authors}</p>`:''}
+      </div>
+      <div class="card-foot">
+        <a href="${c.url||'#'}" target="_blank" rel="noopener" class="btn-open">
+          Öffnen
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>`;
+  }
+
+  async function load(){
+    try{
+      const r = await fetch('/data/cards.json',{cache:'no-cache'});
+      const d = await r.json();
+      const cards = (d.cards||[]).filter(c=>c.is_published!==false && (c.page||'home')===page);
+      grid.innerHTML = cards.length ? cards.map(cardHTML).join('') : '<p style="color:var(--muted);padding:20px 0">Keine Projekte vorhanden.</p>';
+      if(window.attachCardObserver) window.attachCardObserver();
+    }catch(e){
+      console.error('Fehler beim Laden:', e);
+    }
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', load);
+  else load();
+})();

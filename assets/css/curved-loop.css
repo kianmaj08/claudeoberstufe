@@ -1,0 +1,26 @@
+{
+min-height: 50vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+
+  padding-top: 3rem;
+}
+.curved-loop-svg {
+  width: 100%;
+  max-width: 1400px;
+  aspect-ratio: 100 / 12;
+  overflow: visible;
+  display: block;
+  font-size: clamp(2rem, 8vw, 6rem);
+  fill: var(--text, #fff);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1;
+  user-select: none;
+}
+/* center helper so it sits in the middle of content */
+{
+padding-block: 2rem;
+}

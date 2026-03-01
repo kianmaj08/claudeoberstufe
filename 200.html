@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>oberstufe.site</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  
+  <header>
+    <div class="wrap">
+      <div class="left">
+        <a class="brand" href="index.html">oberstufe.site</a>
+      </div>
+      <nav class="nav">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="powerpoints.html" data-i18n="nav_pp">PowerPoints</a>
+        <a href="videos.html" data-i18n="nav_videos">Videos</a>
+      </nav>
+      <div class="right"><button class="menu-btn" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Menü">
+          <span class="menu-icon" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span>
+        </button><div class="dropdown" id="menuList" role="menu" aria-label="Menü">
+  <div class="menu-stack">
+    <a href="javascript:void(0)" class="btn btn-menu" data-modal="modalSettings">Einstellungen</a>
+    <a href="javascript:void(0)" class="btn btn-menu" data-modal="modalChangelog">Changelog</a>
+    <a href="javascript:void(0)" class="btn btn-menu" data-modal="modalLegend">Legende</a>
+    <a href="javascript:void(0)" class="btn btn-menu" data-modal="modalContact">Kontakt</a>
+    <a href="/admin" target="_blank" rel="noopener" class="btn btn-menu">Admin&nbsp;Login</a>
+  </div>
+</div></div></div></div></div>
+      </div>
+    </div>
+  </header>
+
+
+
+  <section class="hero" style="background:linear-gradient(135deg,#E8EEF8 0%,#F3F5F9 100%);">
+    <div class="container">
+      <h1 data-i18n="hero_home_title">Willkommen auf oberstufe.site</h1>
+      <p data-i18n="hero_home_sub">Die zentrale Startseite unserer Projekte</p>
+      <p class="meta">Ein Projekt von Kian Majidian, Basit Rezai, Mark Naujoks, Kamil Köse und Hugo Alvarez aus der Q1.</p>
+      <div class="search-wrap">
+        <div class="search" role="search">
+          <input id="searchInput" type="search" placeholder="Suche nach Themen oder Tags … (z. B. Kunst, Philosophie, Geschichte)">
+          <span class="hint" aria-hidden="true">⌘/Ctrl+K</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:10px;">
+        <h2 data-i18n="grid_title">Unsere Websites</h2>
+        <div>
+          <label for="sortSelect" style="font-size:.9rem; color:var(--muted); margin-right:6px;" data-i18n="sort_label">Sortieren:</label>
+          <select id="sortSelect" style="padding:8px 10px; border:1px solid var(--border); border-radius:8px; background:var(--card); color:var(--text);">
+            <option value="std" selected data-i18n="sort_std">Standard</option>
+            <option value="az" data-i18n="sort_az">A–Z</option>
+            <option value="za" data-i18n="sort_za">Z–A</option>
+            <option value="rnd" data-i18n="sort_rnd">Zufällig</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid" id="projectsGrid">
+        <article class="card" data-title="Philexikon" data-tags="philosophie,lexikon,philexikon">
+          <h3>Philexikon</h3>
+          <p>Ein Lexikon für bekannte Philosophen.</p>
+          <p class="project-note">Ein Projekt von Kian, Basit und Kamil.</p>
+          <div class="tags"><span class="tag philosophie">Philosophie</span></div>
+          <div class="actions"><a class="ghost" href="https://philexikon.netlify.app/" target="_blank" rel="noopener">Öffnen</a></div>
+          <div class="status yellow" title="In Arbeit">In Arbeit</div>
+        </article>
+
+        <article class="card card--blue" data-title="Pieter Bruegel" data-tags="kunst,bruegel,renaissance">
+          <h3>Pieter Bruegel</h3>
+          <p>Biografie, Kunstwerke und Hintergründe des Renaissance-Malers.</p>
+          <p class="project-note">Ein Projekt von Kian, Basit und Mark.</p>
+          <div class="tags"><span class="tag kunst">Kunst</span></div>
+          <div class="actions"><a class="ghost" href="https://pieterbruegel.netlify.app/" target="_blank" rel="noopener">Öffnen</a></div>
+          <div class="status yellow" title="In Arbeit">In Arbeit</div>
+        </article>
+
+        <article class="card card--brown" data-title="Wiener Kongress" data-tags="geschichte,wien,konferenz,wiener kongress">
+          <h3>Wiener Kongress</h3>
+          <p>Kurzer Überblick zum Wiener Kongress.</p>
+          <p class="project-note">Ein Projekt von Kian, Till, Mark und Danush.</p>
+          <div class="tags"><span class="tag geschichte">Geschichte</span></div>
+          <div class="actions"><a class="ghost" href="https://wienerkongress.netlify.app/" target="_blank" rel="noopener">Öffnen</a></div>
+          <div class="status yellow" title="In Arbeit">In Arbeit</div>
+        </article>
+      </div>
+
+      <div style="text-align:center; font-weight:600; color:#6B7280; margin: 14px 0 0;" data-i18n="more_coming">More coming soon</div>
+
+      <div class="info">
+        <h3 data-i18n="about_title">Über dieses Projekt</h3>
+        <p data-i18n="about_1">Dieses Projekt entstand im Rahmen unserer schulischen Arbeiten. Wir experimentieren mit künstlicher Intelligenz, entwickeln Präsentationen und erstellen Websites, die wir hier auf oberstufe.site veröffentlichen.</p>
+        <p data-i18n="about_2">Unsere Seiten werden mit Hilfe von <a class="link" href="https://www.netlify.com/" target="_blank" rel="noopener">Netlify</a> gehostet, während die Domain über <a class="link" href="https://www.squarespace.com/" target="_blank" rel="noopener">Squarespace</a> verwaltet wird.</p>
+        <p data-i18n="about_3">Bitte beachten Sie: Die Websites sind noch nicht vollendet. Inhalte und Gestaltung können sich jederzeit ändern.</p>
+        <p data-i18n="about_4">Bei Fragen oder Ideen können Sie uns gerne unter <a class="mail" href="mailto:oberstufesite@gmail.com">oberstufesite@gmail.com</a> erreichen.</p>
+      </div>
+
+      <div class="improvements">
+        <h3 data-i18n="improv_title">Geplante Verbesserungen</h3>
+        <ul>
+          <li><strong>Optimierungen der Homepage</strong> – Verbesserung von Struktur, Design und Benutzerfreundlichkeit.</li>
+          <li><strong>Integration von Bildern</strong> – Ergänzung passender Abbildungen sowohl auf der Philexikon-Seite als auch auf der Pieter-Bruegel-Seite.</li>
+        </ul>
+      </div>
+
+      <div class="faq">
+        <h3 data-i18n="faq_title">FAQ</h3>
+        <div class="faq-item"><strong data-i18n="faq_q1">Was ist oberstufe.site?</strong><p data-i18n="faq_a1">oberstufe.site ist unsere zentrale Startseite, die alle Schülerprojekte bündelt.</p></div>
+        <div class="faq-item"><strong data-i18n="faq_q2">Warum gibt es mehrere Websites?</strong><p data-i18n="faq_a2">Jedes Projekt hat ein eigenes Thema (z. B. <span class='kw-philosophie'>Philosophie</span>, <span class='kw-kunst'>Kunst</span>, <span class='kw-geschichte'>Geschichte</span>) und wird deshalb auf einer eigenen Website präsentiert.</p></div>
+        <div class="faq-item"><strong data-i18n="faq_q3">Sind die Inhalte schon final?</strong><p data-i18n="faq_a3">Nein – alle Projekte sind noch in Arbeit. Inhalte und Design können sich jederzeit ändern.</p></div>
+        <div class="faq-item"><strong data-i18n="faq_q4">Wie werden die Seiten betrieben?</strong><p data-i18n="faq_a4">Unsere Websites laufen über <a class='link' href='https://www.netlify.com/' target='_blank' rel='noopener'>Netlify</a>, die Domain wird über <a class='link' href='https://www.squarespace.com/' target='_blank' rel='noopener'>Squarespace</a> verwaltet.</p></div>
+        <div class="faq-item"><strong data-i18n="faq_q5">Kann ich Feedback geben oder Ideen einreichen?</strong><p data-i18n="faq_a5">Ja, gerne per E-Mail an <a class='link' href='mailto:oberstufesite@gmail.com'>oberstufesite@gmail.com</a> oder über unser <a class='link' href='https://docs.google.com/forms/d/e/1FAIpQLSc7hitAkvgDHXnOKgRpvolibMhm3iHeag_V-Azm4Mz8zef63w/viewform?usp=dialog' target='_blank' rel='noopener'>Feedback-Formular</a>.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="cta-button" href="add-website.html" data-i18n="cta_add">Projekt hinzufügen</a>
+      <div class="footer-meta">© 2025 oberstufe.site – v2.38a</div>
+      <div class="qr-in-footer" id="qrBlock" title="QR-Code">
+        <div class="share-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5"/><path d="M12 12v2.38a"/></svg>
+          <span data-i18n="share_site">Teile diese Website!</span>
+        </div>
+        <img src="qr-placeholder.jpg" alt="QR-Code">
+      </div>
+    </div>
+  </footer>
+
+  <div id="overlayGlobal" class="overlay-backdrop"></div>
+
+  <div id="modalSettings" class="modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+    <div class="modal-header">
+      <h3 id="settingsTitle" data-i18n="settings_title">Einstellungen</h3>
+      <button id="closeSettings" class="btn">Schließen</button>
+    </div>
+    <div class="modal-body">
+      <div class="row-setting">
+        <span data-i18n="set_theme">Theme</span>
+        <div class="icon-toggle" role="group" aria-label="Theme">
+          <button id="themeLight" class="icon-btn" title="Hell" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          </button>
+          <button id="themeDark" class="icon-btn" title="Dunkel" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="row-setting">
+        <span data-i18n="set_lang">Sprache</span>
+        <div>
+          <button id="langDe" class="btn" style="margin-right:6px;">DE</button>
+          <button id="langEn" class="btn">EN</button>
+        </div>
+      </div>
+      </div>
+      
+      
+    </div>
+  </div>
+
+  <div id="modalChangelog" class="modal" role="dialog" aria-modal="true" aria-labelledby="changelogTitle">
+    <div class="modal-header"><h3 id="changelogTitle">Changelog</h3><button id="closeChangelog" class="btn">Schließen</button>
+<ul><li>v2.14 – Navigation verbessert, Menü überarbeitet (21.09.2025)</li><li>v2.15 – Darkmode eingeführt (21.09.2025)</li><li>v2.16 – Footer überarbeitet (21.09.2025)</li><li>v2.17 – Scroll-Up Button eingefügt (21.09.2025)</li><li>v2.18 – Header/Navi Bugfixes (21.09.2025)</li><li>v2.19 – Design-Optimierungen, Animationen (21.09.2025)</li><li>v2.20 – Farbpalette angepasst (21.09.2025)</li><li>v2.21 – Changelog hinzugefügt (21.09.2025)</li><li>v2.22 – Kleine Layout-Fixes (21.09.2025)</li><li>v2.23 – Neue Version bereitgestellt (21.09.2025)</li><li>v2.24 – Bugfix Scroll-Up Button (21.09.2025)</li><li>v2.25 – Feedback Button hinzugefügt (21.09.2025)</li><li>v2.26 – Korrektur Scroll-Button Verhalten (21.09.2025)</li><li>v2.27 – Chips Design begonnen (21.09.2025)</li><li>v2.28 – Chips farbig (erste Version) (21.09.2025)</li><li>v2.29 – Chips Bugfix (korrekte Farben) (21.09.2025)</li><li>v2.30 – Chips Variante A umgesetzt (21.09.2025)</li><li>v2.31 – Chips Farben in allen Fächern gefixt (21.09.2025)</li><li>v2.32 – Dark Mode Kontrast & Elemente verbessert (21.09.2025)</li><li>v2.33 – Dark Mode Navy + Beige Akzente (21.09.2025)</li><li>v2.34 – Dark Mode Palette #222831/#393E46/#948979/#DFD0B8 (21.09.2025)</li><li>v2.35 – Dark Mode: Titel Anthrazit (21.09.2025)</li><li>v2.36 – Interne Robustheit verbessert (21.09.2025)</li><li>v2.37 – Listener/JS-Struktur bereinigt (21.09.2025)</li><li>v2.38 – Finales Update vor 2.38a Release (21.09.2025)</li></ul>
+</div>
+    <div class="modal-body">
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v1.0 – 18.09.2025</span> · Erste Veröffentlichung der Homepage</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#22C55E;">Erweiterungen – 18.09.2025</span> · Philexikon & Pieter Bruegel integriert</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.0 – 18.09.2025</span> · Überarbeitetes Design</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.1 – 18.09.2025</span> · Feinschliff</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.2 – 19.09.2025</span> · Wiener Kongress, Suche & Tags</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.4 – 20.09.2025</span> · QR im Footer, CTA, Design-Fixes</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#6B7280;">v2.6 – 20.09.2025</span> · Farben wie 12.4, FAQ-Akzente, Menü-Align Fix</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#22C55E;">v2.7 – 20.09.2025</span> · PowerPoints & Videos, Share-Hinweis, Header-Navigation</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#22C55E;">v2.7e – 20.09.2025</span> · Komplettpaket (alle Unterseiten), PPT-Downloads vorbereitet</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.8 – 20.09.2025</span> · Fächer-Abschnitte (PP), DE/EN, QR-Option, „Unsere Websites“</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#22C55E;">v2.8a – 20.09.2025</span> · PP-Chips als Tags, Add-Seite 3 Spalten</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#6B7280;">v2.8b – 20.09.2025</span> · Bugfix: getrennte Seiten, saubere Header/Footer</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#6B7280;">v2.8c – 20.09.2025</span> · Bugfix: kein Zusammenkleben der Seiten</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#6B7280;">v2.8d – 20.09.2025</span> · Einstellungen repariert, Chips hübscher, CTA auf Add-Seite ausgeblendet</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.9 – 20.09.2025</span> · Changelog-Overlay, Dark Mode verbessert, Chips Variante A, Legende & Sprache gefixt</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.10 – 20.09.2025</span> · Hamburger-Icon (3 Striche) & Bugfixes; neue Fachfarben</li>
+        <li style="margin:10px 0;"><span style="font-weight:800; color:#2563EB;">v2.11 – 20.09.2025</span> · Menü-Overlays (Kontakt/Changelog/Legende/Einstellungen), Theme-Switch mit SVG-Sonne/Mond, vollständige DE/EN, Fachfarben fix</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="modalLegend" class="modal" role="dialog" aria-modal="true" aria-labelledby="legendTitle">
+    <div class="modal-header"><h3 id="legendTitle">Legende</h3><button id="closeLegend" class="btn">Schließen</button></div>
+    <div class="modal-body">
+      <h4 style="margin:10px 0 6px">Tags</h4>
+      <p>Farbige Schlagworte geben die Fachbereiche an:</p>
+      <div class="legend-tags">
+<span class="tag chemie">Chemie</span>
+        <span class="tag deutsch">Deutsch</span>
+        <span class="tag erdkunde">Erdkunde</span>
+        <span class="tag geschichte">Geschichte</span>
+        <span class="tag informatik">Informatik</span>
+        <span class="tag kunst">Kunst</span>
+        <span class="tag mathe">Mathe</span>
+        <span class="tag physik">Physik</span>
+        <span class="tag philosophie">Philosophie</span>
+        <span class="tag sowi">SoWi</span>
+        <span class="tag sport">Sport</span>
+</div>
+
+      <h4 style="margin:16px 0 6px">Status‑Badges</h4>
+      <p>Zeigen den aktuellen Stand eines Projekts:</p>
+      <div class="legend-status">
+        <span class="status green">Fertig</span>
+        <span class="status yellow">In Arbeit</span>
+        <span class="status red">Test</span>
+        <span class="status blue">Coming&nbsp;Soon</span>
+</div>
+      <ul class="legend-list">
+  <ul class="status-list">
+    <li class="status-item"><span class="status green">Fertig</span><span class="name">Fertig</span><span class="desc">Projekt/Präsentation ist abgeschlossen.</span></li>
+    <li class="status-item"><span class="status yellow">In Arbeit</span><span class="name">In Arbeit</span><span class="desc">Inhalte werden noch erstellt oder überarbeitet.</span></li>
+    <li class="status-item"><span class="status red">Test</span><span class="name">Test</span><span class="desc">Entwurf oder Beta; kann Fehler enthalten.</span></li>
+    <li class="status-item"><span class="status blue">Coming Soon</span><span class="name">Coming Soon</span><span class="desc">Geplant, aber noch nicht veröffentlicht.</span></li>
+  </ul>
+</ul>
+
+    </div>
+    </div>
+  </div>
+
+  <div id="modalContact" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+    <div class="modal-header"><h3 id="contactTitle" data-i18n="contact_title">Kontakt</h3><button id="closeContact" class="btn">Schließen</button></div>
+    <div class="modal-body">
+      <p><strong>E-Mail:</strong> <a href="mailto:oberstufesite@gmail.com" class="link">oberstufesite@gmail.com</a></p>
+      <p><a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSc7hitAkvgDHXnOKgRpvolibMhm3iHeag_V-Azm4Mz8zef63w/viewform?usp=dialog" target="_blank" rel="noopener" data-i18n="contact_form">Zum Feedback-Formular</a></p>
+    </div>
+  </div>
+
+  <a class="feedback-btn" id="feedbackBtn" href="https://docs.google.com/forms/d/e/1FAIpQLSc7hitAkvgDHXnOKgRpvolibMhm3iHeag_V-Azm4Mz8zef63w/viewform?usp=dialog" target="_blank" rel="noopener" data-i18n="feedback">Feedback</a>
+  <button class="to-top" id="toTopBtn" aria-label="Nach oben scrollen" title="Nach oben"><svg viewBox="0 0 48 48" width="22" height="22" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="2"/><path d="M16 26l8-8 8 8" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+
+<script>
+  (function(){try{const s=localStorage.getItem('theme'); if(s==='dark'||(!s&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();
+
+  const menuBtn=document.getElementById('menuBtn'); const menuList=document.getElementById('menuList');
+  function closeMenu(){ menuList.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); }
+  menuBtn && menuBtn.addEventListener('click', (e)=>{ e.stopPropagation(); const open=menuList.classList.toggle('open'); menuBtn.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', open?'true':'false'); });
+  document.addEventListener('click', (e)=>{ if(menuList && !menuList.contains(e.target) && e.target!==menuBtn){ closeMenu(); } });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeMenu(); } });
+
+  const swTheme = document.getElementById('switchTheme');
+  const swQr = document.getElementById('switchQr');
+  const langDe = document.getElementById('langDe');
+  const langEn = document.getElementById('langEn');
+  const densComfort = document.getElementById('densComfort');
+  const densCompact = document.getElementById('densCompact');
+  const qrBlock = document.getElementById('qrBlock');
+
+  (function initSettings(){
+    const lang = localStorage.getItem('lang') || 'de';
+    const density = localStorage.getItem('density') || 'comfort';
+    const qr = localStorage.getItem('qr') || 'on';
+    const theme = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light');
+
+    document.documentElement.setAttribute('data-theme', theme);
+    if(swTheme && theme==='dark') swTheme.classList.add('on');
+
+    document.documentElement.setAttribute('data-density', density==='compact' ? 'compact' : 'comfort');
+    if(density==='compact'){ densCompact && densCompact.classList.add('primary'); } else { densComfort && densComfort.classList.add('primary'); }
+
+    if(swQr && qr==='on'){ swQr.classList.add('on'); }
+    qrBlock && (qrBlock.style.display = (qr==='off' ? 'none' : 'flex'));
+
+    applyI18N(lang);
+  })();
+
+  swTheme && swTheme.addEventListener('click', ()=>{
+    const now = document.documentElement.getAttribute('data-theme');
+    const next = (now==='dark') ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    swTheme.classList.toggle('on');
+  });
+
+  swQr && swQr.addEventListener('click', ()=>{
+    const isOn = swQr.classList.toggle('on');
+    localStorage.setItem('qr', isOn ? 'on' : 'off');
+    if(qrBlock) qrBlock.style.display = isOn ? 'flex' : 'none';
+  });=>{ localStorage.setItem('lang','de'); applyI18N('de'); });=>{ localStorage.setItem('lang','en'); applyI18N('en'); });
+
+  densComfort && densComfort.addEventListener('click', ()=>{ document.documentElement.setAttribute('data-density','comfort'); localStorage.setItem('density','comfort'); });
+  densCompact && densCompact.addEventListener('click', ()=>{ document.documentElement.setAttribute('data-density','compact'); localStorage.setItem('density','compact'); });
+
+  const openChangelog = document.getElementById('openChangelog');
+  const openSettings = document.getElementById('openSettings');
+  const overlayGlobal = document.getElementById('overlayGlobal');
+  const modalSettings = document.getElementById('modalSettings');
+  const closeSettings = document.getElementById('closeSettings');
+  const themeLight = document.getElementById('themeLight');
+  const themeDark = document.getElementById('themeDark');
+  const openContact = document.getElementById('openContact');
+  const closeContact = document.getElementById('closeContact');
+  openChangelog && openChangelog.addEventListener('click', ()=>{
+    // removed legacy alert, use overlay
+      'Changelog:',
+      'v1.0 – 18.09.2025 – Erste Veröffentlichung der Homepage',
+      'Erweiterungen – 18.09.2025 – Philexikon & Pieter Bruegel',
+      'v2.0 – 18.09.2025 – Überarbeitetes Design',
+      'v2.1 – 18.09.2025 – Feinschliff',
+      'v2.2 – 19.09.2025 – Wiener Kongress, Suche & Tags',
+      'v2.4 – 20.09.2025 – QR im Footer, CTA, Design-Fixes',
+      'v2.6 – 20.09.2025 – Farben wie 12.4, FAQ Akzente, Menü-Align fix',
+      'v2.7 – 20.09.2025 – PowerPoints & Videos, Share-Hinweis, Header-Navigation',
+      'v2.7e – 20.09.2025 – Komplettpaket (alle Unterseiten), PPT-Downloads vorbereitet',
+      'v2.8 – 20.09.2025 – Fächer-Abschnitte (PP), DE/EN, Dichte & QR-Option, „Unsere Websites“',
+      'v2.8a – 20.09.2025 – PP-Chips als Tags, Add-Seite 3 Spalten',
+      'v2.8b – 20.09.2025 – Bugfix: getrennte Seiten, saubere Header/Footer',
+      'v2.8c – 20.09.2025 – Bugfix: kein Zusammenkleben der Seiten, sichere JS-Einbettung'
+    ].join('\n'));
+  });
+
+  
+  // Open Settings modal
+  function openModal(m){ if(overlayGlobal && m){ overlayGlobal.style.display='block'; m.style.display='block'; } }
+  function closeModal(m){ if(overlayGlobal && m){ overlayGlobal.style.display='none'; m.style.display='none'; } }
+
+  openSettings && openSettings.addEventListener('click', ()=>{ openModal(modalSettings); closeMenu(); });
+  closeSettings && closeSettings.addEventListener('click', ()=> closeModal(modalSettings));
+
+  // Contact
+  const modalContact = document.getElementById('modalContact');
+  openContact && openContact.addEventListener('click', ()=> openModal(modalContact));
+  closeContact && closeContact.addEventListener('click', ()=> closeModal(modalContact));
+
+  // Legend
+  const modalLegend = document.getElementById('modalLegend');
+  const closeLegend = document.getElementById('closeLegend');
+  const legendBtn = document.getElementById('openLegend');
+  legendBtn && legendBtn.addEventListener('click', ()=> openModal(modalLegend));
+  closeLegend && closeLegend.addEventListener('click', ()=> closeModal(modalLegend));
+
+  // Changelog
+  const modalChangelog = document.getElementById('modalChangelog');
+  const closeChangelog = document.getElementById('closeChangelog');
+  openChangelog && openChangelog.addEventListener('click', ()=> openModal(modalChangelog));
+  closeChangelog && closeChangelog.addEventListener('click', ()=> closeModal(modalChangelog));
+
+  overlayGlobal && overlayGlobal.addEventListener('click', ()=> {
+    [modalSettings, modalContact, modalLegend, modalChangelog].forEach(m => { if(m) m.style.display='none'; });
+    overlayGlobal.style.display='none';
+  });
+
+  // Theme with icons
+  function setTheme(next){
+    document.documentElement.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next); }catch(e){}
+    themeLight && themeLight.classList.toggle('active', next==='light');
+    themeDark && themeDark.classList.toggle('active', next==='dark');
+  }
+  themeLight && themeLight.addEventListener('click', ()=> setTheme('light'));
+  themeDark && themeDark.addEventListener('click', ()=> setTheme('dark'));
+
+  // QR toggle
+  const switchQr = document.getElementById('switchQr'); const qrBlock = document.getElementById('qrBlock');
+  function setQr(state){ try{localStorage.setItem('qr',state);}catch(e){}; if(switchQr){ switchQr.classList.toggle('on', state==='on'); } if(qrBlock){ qrBlock.style.display = (state==='on'?'flex':'none'); } }
+  switchQr && switchQr.addEventListener('click', ()=>{ const isOn=!switchQr.classList.contains('on'); setQr(isOn?'on':'off'); });
+
+  // Language
+  
+function applyI18N(lang){
+  try{ localStorage.setItem('lang', lang); }catch(e){}
+  const dictDe = (window.I18N && I18N.de) || {};
+  const dictLang = (window.I18N && I18N[lang]) || {};
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = (dictLang[key] !== undefined) ? dictLang[key] : (dictDe[key] !== undefined ? dictDe[key] : el.innerHTML);
+    el.innerHTML = val;
+  });
+  const si = document.getElementById('searchInput');
+  if(si){ si.setAttribute('placeholder', lang==='en' ? 'Search… (topics or tags)' : 'Suche nach Themen oder Tags … (z. B. Kunst, Philosophie, Geschichte)'); }
+}
+);
+    const si = document.getElementById('searchInput');
+    if(si){ si.setAttribute('placeholder', lang==='en' ? 'Search topics or tags… (e.g., art, philosophy, history)' : 'Suche nach Themen oder Tags … (z. B. Kunst, Philosophie, Geschichte)'); }
+  }
+  const langDeBtn = document.getElementById('langDe'); const langEnBtn = document.getElementById('langEn');
+  langDeBtn && langDeBtn.addEventListener('click', ()=> applyI18N('de'));
+  langEnBtn && langEnBtn.addEventListener('click', ()=> applyI18N('en'));
+
+  // Init from storage
+  (function initFromStorage(){
+    const theme = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const lang = localStorage.getItem('lang') || 'de';
+    const qr = localStorage.getItem('qr') || 'on';
+    setTheme(theme);
+    setQr(qr);
+    applyI18N(lang);
+  })();
+
+  
+  const overlayGlobal=document.getElementById('overlayGlobal');
+  const modalSettings=document.getElementById('modalSettings');
+  const modalChangelog=document.getElementById('modalChangelog');
+  const modalLegend=document.getElementById('modalLegend');
+  const modalContact=document.getElementById('modalContact');
+  function openModal(m){ if(overlayGlobal&&m){ overlayGlobal.style.display='block'; m.style.display='block'; } }
+  function closeModal(m){ if(overlayGlobal&&m){ overlayGlobal.style.display='none'; m.style.display='none'; } }
+  const btnSet=document.getElementById('menuOpenSettings');
+  const btnChg=document.getElementById('menuOpenChangelog');
+  const btnLeg=document.getElementById('menuOpenLegend');
+  const btnCon=document.getElementById('menuOpenContact');
+  btnSet && btnSet.addEventListener('click', ()=>{ openModal(modalSettings); closeMenu(); });
+  btnChg && btnChg.addEventListener('click', ()=>{ openModal(modalChangelog); closeMenu(); });
+  btnLeg && btnLeg.addEventListener('click', ()=>{ openModal(modalLegend); closeMenu(); });
+  btnCon && btnCon.addEventListener('click', ()=>{ openModal(modalContact); closeMenu(); });
+
+  const I18N = {
+    de: {
+      nav_home: "Home", nav_pp: "PowerPoints", nav_vid: "Videos",
+      set_theme: "Theme", set_lang: "Sprache", set_density: "Darstellungsdichte", set_qr: "QR im Footer",
+      density_comfort: "Komfortabel", density_compact: "Kompakt",
+      open_changelog: "Changelog", open_contact: "Kontakt",
+      share_site: "Teile diese Website!", feedback: "Feedback",
+      hero_home_title: "Willkommen auf oberstufe.site",
+      hero_home_sub: "Die zentrale Startseite unserer Projekte",
+      grid_title: "Unsere Websites",
+      sort_label: "Sortieren:", sort_std: "Standard", sort_az: "A–Z", sort_za: "Z–A", sort_rnd: "Zufällig",
+      more_coming: "More coming soon",
+      about_title: "Über dieses Projekt",
+      about_1: "Dieses Projekt entstand im Rahmen unserer schulischen Arbeiten. Wir experimentieren mit künstlicher Intelligenz, entwickeln Präsentationen und erstellen Websites, die wir hier auf oberstufe.site veröffentlichen.",
+      about_2: "Unsere Seiten werden mit Hilfe von <a class=\"link\" href=\"https://www.netlify.com/\" target=\"_blank\" rel=\"noopener\">Netlify</a> gehostet, während die Domain über <a class=\"link\" href=\"https://www.squarespace.com/\" target=\"_blank\" rel=\"noopener\">Squarespace</a> verwaltet wird.",
+      about_3: "Bitte beachten Sie: Die Websites sind noch nicht vollendet. Inhalte und Gestaltung können sich jederzeit ändern.",
+      about_4: "Bei Fragen oder Ideen können Sie uns gerne unter <a class=\"mail\" href=\"mailto:oberstufesite@gmail.com\">oberstufesite@gmail.com</a> erreichen.",
+      improv_title: "Geplante Verbesserungen",
+      faq_title: "FAQ",
+      faq_q1: "Was ist oberstufe.site?", faq_a1: "oberstufe.site ist unsere zentrale Startseite, die alle Schülerprojekte bündelt.",
+      faq_q2: "Warum gibt es mehrere Websites?", faq_a2: "Jedes Projekt hat ein eigenes Thema (z. B. <span class='kw-philosophie'>Philosophie</span>, <span class='kw-kunst'>Kunst</span>, <span class='kw-geschichte'>Geschichte</span>) und wird deshalb auf einer eigenen Website präsentiert.",
+      faq_q3: "Sind die Inhalte schon final?", faq_a3: "Nein – alle Projekte sind noch in Arbeit. Inhalte und Design können sich jederzeit ändern.",
+      faq_q4: "Wie werden die Seiten betrieben?", faq_a4: "Unsere Websites laufen über <a class='link' href='https://www.netlify.com/' target='_blank' rel='noopener'>Netlify</a>, die Domain wird über <a class='link' href='https://www.squarespace.com/' target='_blank' rel='noopener'>Squarespace</a> verwaltet.",
+      faq_q5: "Kann ich Feedback geben oder Ideen einreichen?", faq_a5: "Ja, gerne per E-Mail an <a class='link' href='mailto:oberstufesite@gmail.com'>oberstufesite@gmail.com</a> oder über unser <a class='link' href='https://docs.google.com/forms/d/e/1FAIpQLSc7hitAkvgDHXnOKgRpvolibMhm3iHeag_V-Azm4Mz8zef63w/viewform?usp=dialog' target='_blank' rel='noopener'>Feedback-Formular</a>.",
+      add_title: "Wie kann ich selbst ein Projekt hinzufügen?", add_sub: "Es gibt verschiedene Möglichkeiten, dein Projekt bei uns einzubringen.",
+      add_card1_h: "Ansprechen in der Schule", add_card1_p: "Sprich uns einfach in der Schule an – wir schauen gemeinsam, wie wir dein Projekt einbinden können.",
+      add_card2_h: "E-Mail schreiben", add_card2_p: "Schick uns eine E-Mail mit deiner Idee – wir gucken dann, was wir tun können.",
+      add_card3_h: "Feedback-Formular", add_card3_p: "Nutze unser Formular, wenn du uns Details schicken möchtest.",
+      add_why_h: "Warum mitmachen?",
+      add_why_p: "Du machst dein Projekt für jeden frei zugänglich – immer und jederzeit. Dabei sammelst du wertvolle Erfahrungen in Webentwicklung und Präsentation und kannst die Website auch nutzen, um eigene Projekte vorzustellen. Gleichzeitig trägst du dazu bei, unsere Sammlung stetig zu erweitern.",
+      back_home: "← Zurück zur Startseite",
+      cta_add: "Projekt hinzufügen",
+      pp_title: "Willkommen bei oberstufe.site PowerPoints",
+      pp_sub: "Sammlung von Präsentationen, die wir im Unterricht erstellt haben.",
+      pp_nav_physik: "Physik", pp_nav_phil: "Philosophie", pp_nav_geo: "Erdkunde", pp_nav_hist: "Geschichte", pp_nav_sowi: "SoWi",
+      pp_nav_math: "Mathe", pp_nav_de: "Deutsch", pp_nav_sp: "Sport", pp_nav_ch: "Chemie", pp_nav_inf: "Informatik",
+      sec_physik: "Präsentationen aus dem Physikunterricht",
+      sec_phil: "Philosophie-Themen und Denkmodelle",
+      sec_geo: "Geographie & Umwelt",
+      sec_hist: "Historische Themen",
+      sec_sowi: "Sozialwissenschaften & Politik",
+      sec_math: "Mathematik – Material folgt",
+      sec_de: "Deutsch – Material folgt",
+      sec_sp: "Sport – Material folgt",
+      sec_ch: "Chemie – Material folgt",
+      sec_inf: "Informatik – Material folgt",
+      coming_title: "Coming soon", coming_desc: "Material folgt in Kürze.", download: "Download"
+    },
+    en: {
+      nav_home: "Home", nav_pp: "PowerPoints", nav_vid: "Videos",
+      set_theme: "Theme", set_lang: "Language", set_density: "Density", set_qr: "QR in footer",
+      density_comfort: "Comfort", density_compact: "Compact",
+      open_changelog: "Changelog", open_contact: "Contact",
+      share_site: "Share this website!", feedback: "Feedback",
+      hero_home_title: "Welcome to oberstufe.site",
+      hero_home_sub: "The central start page for our projects",
+      grid_title: "Our websites",
+      sort_label: "Sort:", sort_std: "Default", sort_az: "A–Z", sort_za: "Z–A", sort_rnd: "Random",
+      more_coming: "More coming soon",
+      about_title: "About this project",
+      about_1: "This project was created as part of our schoolwork. We experiment with AI, build presentations, and publish websites here on oberstufe.site.",
+      about_2: "Our pages are hosted with <a class=\"link\" href=\"https://www.netlify.com/\" target=\"_blank\" rel=\"noopener\">Netlify</a>, while the domain is managed via <a class=\"link\" href=\"https://www.squarespace.com/\" target=\"_blank\" rel=\"noopener\">Squarespace</a>.",
+      about_3: "Please note: The websites are not yet finished. Content and design may change at any time.",
+      about_4: "If you have questions or ideas, contact us at <a class=\"mail\" href=\"mailto:oberstufesite@gmail.com\">oberstufesite@gmail.com</a>.",
+      improv_title: "Planned improvements",
+      faq_title: "FAQ",
+      faq_q1: "What is oberstufe.site?", faq_a1: "oberstufe.site is our central start page that collects all student projects.",
+      faq_q2: "Why multiple websites?", faq_a2: "Each project has its own topic (e.g., <span class='kw-philosophie'>philosophy</span>, <span class='kw-kunst'>art</span>, <span class='kw-geschichte'>history</span>) and is presented on its own website.",
+      faq_q3: "Are the contents final?", faq_a3: "No — all projects are still in progress. Content and design can change anytime.",
+      faq_q4: "How are the pages operated?", faq_a4: "Our websites run on <a class='link' href='https://www.netlify.com/' target='_blank' rel='noopener'>Netlify</a>, the domain is managed via <a class='link' href='https://www.squarespace.com/' target='_blank' rel='noopener'>Squarespace</a>.",
+      faq_q5: "How can I give feedback?", faq_a5: "By email to <a class='link' href='mailto:oberstufesite@gmail.com'>oberstufesite@gmail.com</a> or using our <a class='link' href='https://docs.google.com/forms/d/e/1FAIpQLSc7hitAkvgDHXnOKgRpvolibMhm3iHeag_V-Azm4Mz8zef63w/viewform?usp=dialog' target='_blank' rel='noopener'>feedback form</a>.",
+      add_title: "How can I add my own project?", add_sub: "There are different ways to contribute your project.",
+      add_card1_h: "Talk to us at school", add_card1_p: "Come talk to us at school — we will see how to include your project.",
+      add_card2_h: "Send an email", add_card2_p: "Email us your idea — and we’ll see what we can do.",
+      add_card3_h: "Feedback form", add_card3_p: "Use our form if you want to send us details.",
+      add_why_h: "Why participate?",
+      add_why_p: "You make your project freely accessible — always and at any time. You gain valuable experience in web development and presenting, can use the website to showcase your own projects, and help grow the collection.",
+      back_home: "← Back to homepage",
+      cta_add: "Add project",
+      pp_title: "Welcome to oberstufe.site PowerPoints",
+      pp_sub: "Collection of presentations we created in class.",
+      pp_nav_physik: "Physics", pp_nav_phil: "Philosophy", pp_nav_geo: "Geography", pp_nav_hist: "History", pp_nav_sowi: "Social Studies",
+      pp_nav_math: "Math", pp_nav_de: "German", pp_nav_sp: "PE", pp_nav_ch: "Chemistry", pp_nav_inf: "Computer Science",
+      sec_physik: "Presentations from physics class",
+      sec_phil: "Philosophy topics and models",
+      sec_geo: "Geography & environment",
+      sec_hist: "Historical topics",
+      sec_sowi: "Social sciences & politics",
+      sec_math: "Mathematics — coming soon",
+      sec_de: "German — coming soon",
+      sec_sp: "Physical education — coming soon",
+      sec_ch: "Chemistry — coming soon",
+      sec_inf: "Computer science — coming soon",
+      coming_title: "Coming soon", coming_desc: "Content coming shortly.", download: "Download"
+    }
+  };
+  
+function applyI18N(lang){
+  try{ localStorage.setItem('lang', lang); }catch(e){}
+  const dictDe = (window.I18N && I18N.de) || {};
+  const dictLang = (window.I18N && I18N[lang]) || {};
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = (dictLang[key] !== undefined) ? dictLang[key] : (dictDe[key] !== undefined ? dictDe[key] : el.innerHTML);
+    el.innerHTML = val;
+  });
+  const si = document.getElementById('searchInput');
+  if(si){ si.setAttribute('placeholder', lang==='en' ? 'Search… (topics or tags)' : 'Suche nach Themen oder Tags … (z. B. Kunst, Philosophie, Geschichte)'); }
+}
+);
+    const si = document.getElementById('searchInput');
+    if(si){ si.setAttribute('placeholder', lang==='en' ? 'Search topics or tags… (e.g., art, philosophy, history)' : 'Suche nach Themen oder Tags … (z. B. Kunst, Philosophie, Geschichte)'); }
+  }
+</script>
+<script>
+    // Search + Sort (Home)
+    const searchInput = document.getElementById('searchInput');
+    const grid = document.getElementById('projectsGrid');
+    let cards = Array.from(grid.children);
+    const originalOrder = cards.slice();
+    function filterCards(q){
+      const query = (q||'').trim().toLowerCase();
+      cards.forEach(card => {
+        const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+        const text = card.innerText.toLowerCase();
+        const match = !query || tags.includes(query) || text.includes(query);
+        card.style.display = match ? '' : 'none';
+      });
+    }
+    function shuffle(array){
+      for(let i=array.length-1; i>0; i--){
+        const j=Math.floor(Math.random()*(i+1)); [array[i], array[j]]=[array[j], array[i]];
+      }
+      return array;
+    }
+    function sortCards(mode){
+      const visible = cards.filter(c => c.style.display !== 'none');
+      if(mode==='az'){ visible.sort((a,b)=> (a.getAttribute('data-title')||'').localeCompare(b.getAttribute('data-title')||'')); }
+      else if(mode==='za'){ visible.sort((a,b)=> (b.getAttribute('data-title')||'').localeCompare(a.getAttribute('data-title')||'')); }
+      else if(mode==='rnd'){ shuffle(visible); }
+      else{ visible.sort((a,b)=> originalOrder.indexOf(a)-originalOrder.indexOf(b)); }
+      visible.forEach(el=> grid.appendChild(el));
+    }
+    const sortSelect=document.getElementById('sortSelect');
+    searchInput && searchInput.addEventListener('input', (e)=>{ filterCards(e.target.value); sortCards(sortSelect.value); });
+    sortSelect && sortSelect.addEventListener('change', (e)=> sortCards(e.target.value));
+</script>
+
+<script>
+/* v2.14 core js */
+document.addEventListener('DOMContentLoaded', function(){
+  const menuBtn=document.getElementById('menuBtn');
+  const menuList=document.getElementById('menuList');
+  const overlay=document.getElementById('overlayGlobal');
+  const modSettings=document.getElementById('modalSettings');
+  const modChangelog=document.getElementById('modalChangelog');
+  const modLegend=document.getElementById('modalLegend');
+  const modContact=document.getElementById('modalContact');
+
+  function closeMenu(){ if(menuList) menuList.classList.remove('open'); if(menuBtn){ menuBtn.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); } }
+  function openMenu(){ if(menuList) menuList.classList.add('open'); if(menuBtn){ menuBtn.classList.add('open'); menuBtn.setAttribute('aria-expanded','true'); } }
+
+  menuBtn && menuBtn.addEventListener('click', (e)=>{ e.stopPropagation(); menuList && menuList.classList.contains('open') ? closeMenu() : openMenu(); });
+  document.addEventListener('click', (e)=>{ if(menuList && !menuList.contains(e.target) && e.target!==menuBtn) closeMenu(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeMenu(); [modSettings,modChangelog,modLegend,modContact].forEach(m=>m&&(m.style.display='none')); overlay&&(overlay.style.display='none'); } });
+
+  function openModal(m){ overlay&&(overlay.style.display='block'); if(m) m.style.display='block'; closeMenu(); }
+  function closeModal(m){ if(m) m.style.display='none'; if([modSettings,modChangelog,modLegend,modContact].every(el=>!el||el.style.display==='none')){ overlay&&(overlay.style.display='none'); } }
+
+  const hook=(id,modal)=>{ const el=document.getElementById(id); el&&el.addEventListener('click', ()=> openModal(modal)); };
+  hook('menuOpenSettings', modSettings);
+  hook('menuOpenChangelog', modChangelog);
+  hook('menuOpenLegend', modLegend);
+  hook('menuOpenContact', modContact);
+
+  ['closeSettings','closeChangelog','closeLegend','closeContact'].forEach(i=>{ const b=document.getElementById(i); b&&b.addEventListener('click', ()=>{ const m = i==='closeSettings'?modSettings: i==='closeChangelog'?modChangelog: i==='closeLegend'?modLegend: modContact; closeModal(m); }); });
+  overlay && overlay.addEventListener('click', ()=>{ [modSettings,modChangelog,modLegend,modContact].forEach(m=>m&&(m.style.display='none')); overlay.style.display='none'; });
+
+  // Theme
+  const themeLight=document.getElementById('themeLight'); const themeDark=document.getElementById('themeDark');
+  function setTheme(next){ document.documentElement.setAttribute('data-theme', next); try{localStorage.setItem('theme', next);}catch(e){}; themeLight&&themeLight.classList.toggle('active', next==='light'); themeDark&&themeDark.classList.toggle('active', next==='dark'); }
+  themeLight && themeLight.addEventListener('click', ()=> setTheme('light'));
+  themeDark && themeDark.addEventListener('click', ()=> setTheme('dark'));
+
+  // Language
+  
+function applyI18N(lang){
+  try{ localStorage.setItem('lang', lang); }catch(e){}
+  const dictDe = (window.I18N && I18N.de) || {};
+  const dictLang = (window.I18N && I18N[lang]) || {};
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = (dictLang[key] !== undefined) ? dictLang[key] : (dictDe[key] !== undefined ? dictDe[key] : el.innerHTML);
+    el.innerHTML = val;
+  });
+  const si = document.getElementById('searchInput');
+  if(si){ si.setAttribute('placeholder', lang==='en' ? 'Search… (topics or tags)' : 'Suche nach Themen oder Tags … (z. B. Kunst, Philosophie, Geschichte)'); }
+}
+const langDe=document.getElementById('langDe'); const langEn=document.getElementById('langEn');=> applyI18N('de'));=> applyI18N('en'));
+
+  // QR
+  const switchQr=document.getElementById('switchQr'); const qrBlock=document.getElementById('qrBlock');
+  function setQr(state){ try{localStorage.setItem('qr', state);}catch(e){}; switchQr&&switchQr.classList.toggle('on', state==='on'); qrBlock&&(qrBlock.style.display=(state==='on'?'flex':'none')); }
+  switchQr && switchQr.addEventListener('click', ()=>{ const on=!switchQr.classList.contains('on'); setQr(on?'on':'off'); });
+
+  // Init
+  const theme=(localStorage.getItem('theme'))||(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light');
+  const lang=(localStorage.getItem('lang'))||'de';
+  const qr=(localStorage.getItem('qr'))||'on';
+  setTheme(theme); applyI18N(lang); setQr(qr);
+
+  // Scroll buttons (feedback + to-top)
+  });
+</script>
+
+<script>
+/* v2.16 scroll js */
+(function(){
+  })();
+</script>
+
+<script>
+/* v2.17 theme js */
+(function(){
+  const themeLight=document.getElementById('themeLight');
+  const themeDark=document.getElementById('themeDark');
+  function setTheme(next){
+    document.documentElement.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next);}catch(e){}
+    if(themeLight) themeLight.classList.toggle('active', next==='light');
+    if(themeDark) themeDark.classList.toggle('active', next==='dark');
+  }
+  const saved=localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light');
+  setTheme(saved);
+  themeLight && themeLight.addEventListener('click', ()=> setTheme('light'));
+  themeDark && themeDark.addEventListener('click', ()=> setTheme('dark'));
+})();
+</script>
+
+
+
+
+<script>
+/* v2.26 unified scroll visibility */
+(function(){
+  const toTopBtn = document.getElementById('toTopBtn');
+  const feedbackBtn = document.getElementById('feedbackBtn');
+  function sync(){
+    const y = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const show = y > 160;
+    if(toTopBtn) toTopBtn.classList.toggle('show', show);
+    if(feedbackBtn) feedbackBtn.classList.toggle('show', show);
+  }
+  window.addEventListener('scroll', sync, {passive:true});
+  sync();
+  if(toTopBtn){
+    toTopBtn.addEventListener('click', function(){
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+})();
+</script>
+
+
+<script>
+/* v2.37 – Language listeners harden */
+(function(){
+  function safeApply(lang){
+    if (typeof applyI18N === 'function') { applyI18N(lang); }
+  }
+  var langDeBtn = document.getElementById('langDe');
+  var langEnBtn = document.getElementById('langEn');
+  if(langDeBtn){ langDeBtn.onclick = function(){ safeApply('de'); }; }
+  if(langEnBtn){ langEnBtn.onclick = function(){ safeApply('en'); }; }
+})();
+</script>
+
+
+<script>
+// v2.41a helpers
+(function(){
+  // Title anthracite on index & 200
+  try{
+    var h1 = document.querySelector('h1');
+    if(h1 && /Willkommen auf oberstufe\.site/i.test(h1.textContent)){
+      h1.classList.add('site-title','title-anthrazit');
+    }
+  }catch(e){}
+
+  // Mark feedback card to color links blue
+  try{
+    document.querySelectorAll('.card, section, div').forEach(function(el){
+      if(/Kann ich Feedback geben oder Ideen einreichen\?/i.test(el.textContent)){
+        // add class to closest card-like container
+        var target = el.closest('.card') || el;
+        target.classList.add('feedback-card');
+      }
+    });
+  }catch(e){}
+})();
+</script>
+
+
+<!-- Netlify Identity (login status only) -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+(function(){
+  function setAdminMode(user){
+    if(user){ document.documentElement.classList.add('admin-yes'); }
+    else{ document.documentElement.classList.remove('admin-yes'); }
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    if(window.netlifyIdentity){
+      window.netlifyIdentity.on('init', setAdminMode);
+      window.netlifyIdentity.on('login', function(user){ setAdminMode(user); });
+      window.netlifyIdentity.on('logout', function(){ setAdminMode(null); });
+      window.netlifyIdentity.init();
+    }
+  });
+})();
+</script>
+
+
+<script>
+// v2.70 Menu + Modals + Theme
+(function(){
+  const btn = document.getElementById('menuBtn');
+  const list = document.getElementById('menuList');
+  const overlay = document.getElementById('overlayGlobal');
+
+  function openMenu(){ if(list){ list.classList.add('open'); } if(btn){ btn.classList.add('open'); btn.setAttribute('aria-expanded','true'); } }
+  function closeMenu(){ if(list){ list.classList.remove('open'); } if(btn){ btn.classList.remove('open'); btn.setAttribute('aria-expanded','false'); } }
+
+  btn && btn.addEventListener('click', (e)=>{ e.stopPropagation(); list && (list.classList.contains('open')?closeMenu():openMenu()); });
+
+  document.addEventListener('click', (e)=>{
+    if(list && !list.contains(e.target) && !btn.contains(e.target)) closeMenu();
+  });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeMenu(); closeAllModals(); }});
+
+  // Modals
+  const modals = Array.from(document.querySelectorAll('.modal'));
+  function closeAllModals(){ modals.forEach(m=>m.classList.remove('open')); overlay && overlay.classList.remove('show'); }
+  function openModal(id){ closeMenu(); const m=document.getElementById(id); if(m){ m.classList.add('open'); overlay && overlay.classList.add('show'); } }
+
+  document.querySelectorAll('#menuList [data-modal]').forEach(el=>{
+    el.addEventListener('click', ()=> openModal(el.getAttribute('data-modal')));
+  });
+  overlay && overlay.addEventListener('click', closeAllModals);
+  document.querySelectorAll('[data-close]').forEach(x=> x.addEventListener('click', closeAllModals));
+
+  // Theme
+  function setTheme(next){
+    document.documentElement.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next);}catch(e){}
+    const tL=document.getElementById('themeLight'); const tD=document.getElementById('themeDark');
+    tL && tL.classList.toggle('active', next==='light');
+    tD && tD.classList.toggle('active', next==='dark');
+  }
+  const saved = (function(){
+    try{ return localStorage.getItem('theme'); }catch(e){ return null; }
+  })() || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light');
+  setTheme(saved);
+
+  const tL=document.getElementById('themeLight'); const tD=document.getElementById('themeDark');
+  tL && tL.addEventListener('click', ()=> setTheme('light'));
+  tD && tD.addEventListener('click', ()=> setTheme('dark'));
+})();
+</script>
+
+<script>
+// v2.61 – Client-side search minimal (no counter, no layout shift)
+(function(){
+  const input = document.getElementById('searchInput');
+  if(!input) return;
+  function norm(t){ return (t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+  function items(){ return Array.from(document.querySelectorAll('.card')); }
+  function matches(el, q){
+    if(!q) return true;
+    const hay = norm(el.textContent);
+    const tags = (el.getAttribute('data-tags')||'') + ' ' + (el.getAttribute('data-tag')||'');
+    return hay.includes(q) || norm(tags).includes(q);
+  }
+  function apply(q){
+    const qn = norm(q);
+    items().forEach(el=>{ el.style.display = matches(el, qn) ? '' : 'none'; });
+  }
+  input.addEventListener('input', ()=> apply(input.value));
+  document.addEventListener('keydown', (e)=>{ if((e.ctrlKey||e.metaKey) && (e.key==='k'||e.key==='K')){ e.preventDefault(); input.focus(); }});
+})();
+</script>
+
+</body>
+</html>
