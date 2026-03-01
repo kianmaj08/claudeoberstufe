@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Dashboard – oberstufe.site</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../styles.css">
+  <script>(function(){ var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); document.documentElement.setAttribute('data-theme',t); })();</script>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a class="brand" href="../index.html">oberstufe<em>.</em>site</a>
+    <span style="font-size:.8rem;font-weight:600;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;">Admin Panel</span>
+    <div class="header-right">
+      <button class="icon-btn" id="themeToggle" title="Theme wechseln" aria-label="Theme wechseln">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+      </button>
+      <button class="btn btn-ghost btn-sm" id="logoutBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Abmelden
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="admin-layout">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar-section">
+      <div class="admin-sidebar-label">Übersicht</div>
+      <button class="admin-nav-link active" data-view="dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </button>
+    </div>
+    <div class="admin-sidebar-section">
+      <div class="admin-sidebar-label">Inhalte</div>
+      <button class="admin-nav-link" data-view="cards">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Karten verwalten
+      </button>
+    </div>
+    <div class="admin-sidebar-section">
+      <div class="admin-sidebar-label">Protokoll</div>
+      <button class="admin-nav-link" data-view="activity">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Aktivitätslog
+      </button>
+    </div>
+    <div style="padding:20px 20px 0;border-top:1px solid var(--border);margin-top:16px;">
+      <a href="../index.html" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        Zur Website
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+
+    <!-- ── Dashboard View ─────────────────────────────── -->
+    <div id="view-dashboard">
+      <div class="admin-header">
+        <div>
+          <h1>Dashboard</h1>
+          <p class="muted" style="font-size:.875rem;margin-top:2px;">Willkommen zurück im Admin-Panel.</p>
+        </div>
+        <button class="btn btn-primary btn-sm" id="dashAddBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+          Karte hinzufügen
+        </button>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-grid" id="kpiGrid">
+        <div class="kpi-card"><div class="kpi-label">Karten gesamt</div><div class="kpi-value" id="kpiTotal">–</div></div>
+        <div class="kpi-card"><div class="kpi-label">Fertig</div><div class="kpi-value" id="kpiFertig" style="color:var(--green)">–</div></div>
+        <div class="kpi-card"><div class="kpi-label">In Arbeit</div><div class="kpi-value" id="kpiArbeit" style="color:var(--amber)">–</div></div>
+        <div class="kpi-card"><div class="kpi-label">Test</div><div class="kpi-value" id="kpiTest" style="color:var(--blue)">–</div></div>
+        <div class="kpi-card"><div class="kpi-label">Sichtbar</div><div class="kpi-value" id="kpiPublished">–</div></div>
+      </div>
+
+      <!-- Status-Verteilung -->
+      <div class="box" style="margin-bottom:16px;">
+        <h3 style="font-size:1rem;margin-bottom:14px;">Status-Verteilung</h3>
+        <div id="statusChart" style="display:flex;flex-direction:column;gap:8px;"></div>
+      </div>
+
+      <!-- Quick Table -->
+      <div class="box">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+          <h3 style="font-size:1rem;">Zuletzt hinzugefügt</h3>
+          <button class="btn btn-ghost btn-sm" id="seeAllBtn">Alle anzeigen →</button>
+        </div>
+        <div id="quickTable"></div>
+      </div>
+    </div>
+
+    <!-- ── Cards View ─────────────────────────────────── -->
+    <div id="view-cards" style="display:none">
+      <div class="admin-header">
+        <div>
+          <h1>Karten verwalten</h1>
+          <p class="muted" style="font-size:.875rem;margin-top:2px;">Alle Projekte bearbeiten, erstellen und löschen.</p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="export-btn" id="exportBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            CSV Export
+          </button>
+          <button class="btn btn-primary btn-sm" id="addCardBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            Karte hinzufügen
+          </button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <div class="table-controls">
+          <div class="table-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="search" id="tableSearch" placeholder="Suchen nach Titel, Tag, Status …">
+          </div>
+          <select class="filter-select" id="pageFilter">
+            <option value="">Alle Seiten</option>
+            <option value="home">Home</option>
+            <option value="powerpoints">PowerPoints</option>
+            <option value="videos">Videos</option>
+            <option value="spiele">Spiele</option>
+          </select>
+          <select class="filter-select" id="statusFilter">
+            <option value="">Alle Status</option>
+            <option value="fertig">Fertig</option>
+            <option value="in_arbeit">In Arbeit</option>
+            <option value="test">Test</option>
+            <option value="coming_soon">Coming Soon</option>
+          </select>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-sort="title">Titel <span class="sort-arrow">↕</span></th>
+                <th data-sort="tag">Fach <span class="sort-arrow">↕</span></th>
+                <th data-sort="page">Seite <span class="sort-arrow">↕</span></th>
+                <th data-sort="status">Status <span class="sort-arrow">↕</span></th>
+                <th>Sichtbar</th>
+                <th>Aktionen</th>
+              </tr>
+            </thead>
+            <tbody id="cardsTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="pagination" id="tablePagination"></div>
+      </div>
+    </div>
+
+    <!-- ── Activity View ──────────────────────────────── -->
+    <div id="view-activity" style="display:none">
+      <div class="admin-header">
+        <div>
+          <h1>Aktivitätslog</h1>
+          <p class="muted" style="font-size:.875rem;margin-top:2px;">Alle Änderungen an Karten in dieser Sitzung.</p>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="clearLogBtn">Log leeren</button>
+      </div>
+      <div id="activityLog"></div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ── Edit/Create Modal ──────────────────────────────── -->
+<div class="modal-backdrop" id="cardModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="modalTitle">Karte bearbeiten</h3>
+      <button class="icon-btn" id="modalClose">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editId">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="editTitle">Titel *</label>
+          <input type="text" id="editTitle" class="form-input" placeholder="Projekttitel">
+        </div>
+        <div class="form-group">
+          <label for="editTag">Fach/Tag</label>
+          <select id="editTag" class="form-select">
+            <option value="">– kein Tag –</option>
+            <option value="philosophie">Philosophie</option>
+            <option value="geschichte">Geschichte</option>
+            <option value="physik">Physik</option>
+            <option value="chemie">Chemie</option>
+            <option value="mathe">Mathe</option>
+            <option value="erdkunde">Erdkunde</option>
+            <option value="deutsch">Deutsch</option>
+            <option value="informatik">Informatik</option>
+            <option value="sport">Sport</option>
+            <option value="kunst">Kunst</option>
+            <option value="sowi">SoWi</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="editSubtitle">Untertitel</label>
+        <input type="text" id="editSubtitle" class="form-input" placeholder="Kurze Beschreibung">
+      </div>
+      <div class="form-group">
+        <label for="editAuthors">Autoren</label>
+        <input type="text" id="editAuthors" class="form-input" placeholder="z. B. Kian, Mark, Basit">
+      </div>
+      <div class="form-group">
+        <label for="editUrl">URL *</label>
+        <input type="url" id="editUrl" class="form-input" placeholder="https://…">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="editPage">Seite</label>
+          <select id="editPage" class="form-select">
+            <option value="home">Home</option>
+            <option value="powerpoints">PowerPoints</option>
+            <option value="videos">Videos</option>
+            <option value="spiele">Spiele</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="editStatus">Status</label>
+          <select id="editStatus" class="form-select">
+            <option value="fertig">Fertig</option>
+            <option value="in_arbeit">In Arbeit</option>
+            <option value="test">Test</option>
+            <option value="coming_soon">Coming Soon</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="editImageUrl">Bild-URL (optional)</label>
+        <input type="url" id="editImageUrl" class="form-input" placeholder="https://…">
+      </div>
+      <label class="checkbox-row">
+        <input type="checkbox" id="editPublished" checked>
+        Sichtbar (is_published)
+      </label>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" id="modalCancel">Abbrechen</button>
+      <button class="btn btn-primary" id="modalSave">Speichern</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Delete Confirm Modal ───────────────────────────── -->
+<div class="modal-backdrop" id="deleteModal">
+  <div class="modal-box" style="max-width:400px">
+    <div class="modal-head">
+      <h3>Karte löschen?</h3>
+      <button class="icon-btn" id="deleteModalClose">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Möchtest du <strong id="deleteCardTitle"></strong> wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" id="deleteCancelBtn">Abbrechen</button>
+      <button class="btn" id="deleteConfirmBtn" style="background:var(--red);border-color:var(--red);color:white;">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container"></div>
+
+<script src="../assets/js/main.js"></script>
+<script>
+/* =========================================================
+   Admin Dashboard JS
+   - Karten werden lokal aus cards.json geladen und im
+     localStorage gecacht (für Demo-Zwecke ohne Backend)
+   - In einer echten App: PUT/POST zu einem API-Endpunkt
+   ========================================================= */
+
+// ── Auth Guard ──────────────────────────────────────────
+if (localStorage.getItem('admin_session') !== 'authenticated') {
+  window.location.href = 'index.html';
+}
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  localStorage.removeItem('admin_session');
+  window.location.href = 'index.html';
+});
+
+// ── State ───────────────────────────────────────────────
+let cards = [];
+let activityLog = JSON.parse(localStorage.getItem('admin_activity') || '[]');
+let editMode = 'create'; // 'create' | 'edit'
+let deleteTargetId = null;
+let tableQuery = '';
+let tablePageFilter = '';
+let tableStatusFilter = '';
+let tableSortCol = 'title';
+let tableSortDir = 1;
+let currentPage = 1;
+const PAGE_SIZE = 8;
+
+// ── Load Cards ──────────────────────────────────────────
+async function loadCards() {
+  try {
+    const cached = localStorage.getItem('admin_cards_cache');
+    if (cached) {
+      cards = JSON.parse(cached);
+    } else {
+      const res = await fetch('../data/cards.json', { cache: 'no-cache' });
+      const data = await res.json();
+      cards = data.cards || [];
+      saveCards();
+    }
+    renderAll();
+  } catch (e) {
+    window.showToast('Fehler beim Laden der Karten: ' + e.message, 'error');
+  }
+}
+
+function saveCards() {
+  localStorage.setItem('admin_cards_cache', JSON.stringify(cards));
+}
+
+function logActivity(type, card) {
+  const entry = {
+    type, // 'create' | 'update' | 'delete'
+    title: card.title || '(kein Titel)',
+    id: card.id,
+    time: new Date().toISOString()
+  };
+  activityLog.unshift(entry);
+  if (activityLog.length > 50) activityLog = activityLog.slice(0, 50);
+  localStorage.setItem('admin_activity', JSON.stringify(activityLog));
+  if (document.getElementById('view-activity').style.display !== 'none') renderActivity();
+}
+
+// ── Render ───────────────────────────────────────────────
+function renderAll() {
+  renderKPIs();
+  renderTable();
+  renderQuickTable();
+  renderActivity();
+  renderStatusChart();
+}
+
+function renderKPIs() {
+  const pub = cards.filter(c => c.is_published !== false);
+  document.getElementById('kpiTotal').textContent = cards.length;
+  document.getElementById('kpiFertig').textContent = cards.filter(c => c.status === 'fertig').length;
+  document.getElementById('kpiArbeit').textContent = cards.filter(c => c.status === 'in_arbeit').length;
+  document.getElementById('kpiTest').textContent = cards.filter(c => c.status === 'test').length;
+  document.getElementById('kpiPublished').textContent = pub.length;
+}
+
+function renderStatusChart() {
+  const counts = { fertig: 0, in_arbeit: 0, test: 0, coming_soon: 0 };
+  cards.forEach(c => { if (counts[c.status] !== undefined) counts[c.status]++; });
+  const labels = { fertig: 'Fertig', in_arbeit: 'In Arbeit', test: 'Test', coming_soon: 'Coming Soon' };
+  const colors = { fertig: 'var(--green)', in_arbeit: 'var(--amber)', test: 'var(--blue)', coming_soon: 'var(--muted)' };
+  const total = cards.length || 1;
+  const chart = document.getElementById('statusChart');
+  chart.innerHTML = Object.entries(counts).map(([key, val]) => `
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span style="width:80px;font-size:.8rem;color:var(--muted);font-weight:500;">${labels[key]}</span>
+      <div style="flex:1;background:var(--bg2);border-radius:99px;height:8px;overflow:hidden;">
+        <div style="height:100%;width:${(val/total*100).toFixed(1)}%;background:${colors[key]};border-radius:99px;transition:width .4s ease;"></div>
+      </div>
+      <span style="font-size:.8rem;font-weight:700;min-width:24px;text-align:right;">${val}</span>
+    </div>
+  `).join('');
+}
+
+function renderQuickTable() {
+  const recent = cards.slice().sort((a, b) => new Date(b.created_at||0) - new Date(a.created_at||0)).slice(0, 5);
+  const statusLabel = { fertig: 'Fertig', in_arbeit: 'In Arbeit', test: 'Test', coming_soon: 'Coming Soon' };
+  const el = document.getElementById('quickTable');
+  if (!recent.length) { el.innerHTML = '<p class="muted" style="font-size:.85rem;">Noch keine Karten vorhanden.</p>'; return; }
+  el.innerHTML = `<table class="data-table">
+    <thead><tr><th>Titel</th><th>Seite</th><th>Status</th></tr></thead>
+    <tbody>${recent.map(c => `<tr>
+      <td><strong>${c.title || '–'}</strong></td>
+      <td><span style="font-size:.8rem;color:var(--muted);">${c.page || '–'}</span></td>
+      <td><span class="status-badge status-${c.status}">${statusLabel[c.status]||c.status||'–'}</span></td>
+    </tr>`).join('')}</tbody>
+  </table>`;
+}
+
+function getFilteredCards() {
+  let result = cards.slice();
+  if (tableQuery) {
+    const q = tableQuery.toLowerCase();
+    result = result.filter(c =>
+      (c.title||'').toLowerCase().includes(q) ||
+      (c.tag||'').toLowerCase().includes(q) ||
+      (c.status||'').toLowerCase().includes(q) ||
+      (c.authors||'').toLowerCase().includes(q)
+    );
+  }
+  if (tablePageFilter) result = result.filter(c => (c.page||'') === tablePageFilter);
+  if (tableStatusFilter) result = result.filter(c => (c.status||'') === tableStatusFilter);
+  result.sort((a, b) => {
+    const va = (a[tableSortCol] || '').toString().toLowerCase();
+    const vb = (b[tableSortCol] || '').toString().toLowerCase();
+    return va.localeCompare(vb, 'de') * tableSortDir;
+  });
+  return result;
+}
+
+function renderTable() {
+  const filtered = getFilteredCards();
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  if (currentPage > totalPages) currentPage = totalPages;
+
+  const pageItems = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+  const statusLabel = { fertig: 'Fertig', in_arbeit: 'In Arbeit', test: 'Test', coming_soon: 'Coming Soon' };
+  const tbody = document.getElementById('cardsTableBody');
+
+  if (!pageItems.length) {
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--muted);">Keine Karten gefunden.</td></tr>`;
+  } else {
+    tbody.innerHTML = pageItems.map(c => `
+      <tr data-id="${c.id}">
+        <td><strong>${c.title || '–'}</strong>${c.subtitle ? `<br><span style="font-size:.78rem;color:var(--muted)">${c.subtitle}</span>` : ''}</td>
+        <td>${c.tag ? `<span class="pill tag-${c.tag}">${c.tag.charAt(0).toUpperCase()+c.tag.slice(1)}</span>` : '<span class="muted">–</span>'}</td>
+        <td><span style="font-size:.82rem;color:var(--muted);">${c.page || '–'}</span></td>
+        <td><span class="status-badge status-${c.status}">${statusLabel[c.status]||c.status||'–'}</span></td>
+        <td>
+          <label class="toggle" style="width:38px;height:22px;">
+            <input type="checkbox" class="toggle-published" data-id="${c.id}" ${c.is_published !== false ? 'checked' : ''}>
+            <span class="toggle-track" style=""></span>
+          </label>
+        </td>
+        <td>
+          <div class="actions-cell">
+            <button class="btn btn-ghost btn-sm edit-btn" data-id="${c.id}" title="Bearbeiten">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
+            <button class="btn btn-ghost btn-sm delete-btn" data-id="${c.id}" title="Löschen" style="color:var(--red)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+
+    // Toggle-Events
+    tbody.querySelectorAll('.toggle-published').forEach(toggle => {
+      toggle.addEventListener('change', () => {
+        const id = toggle.dataset.id;
+        const card = cards.find(c => c.id === id);
+        if (card) {
+          card.is_published = toggle.checked;
+          saveCards();
+          logActivity('update', card);
+          window.showToast(`${card.title} ist jetzt ${toggle.checked ? 'sichtbar' : 'verborgen'}`, 'success');
+          renderKPIs();
+        }
+      });
+    });
+
+    // Edit-Events
+    tbody.querySelectorAll('.edit-btn').forEach(btn => {
+      btn.addEventListener('click', () => openEditModal(btn.dataset.id));
+    });
+
+    // Delete-Events
+    tbody.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', () => openDeleteModal(btn.dataset.id));
+    });
+  }
+
+  // Pagination
+  const pag = document.getElementById('tablePagination');
+  pag.innerHTML = `<p>${filtered.length} Einträge · Seite ${currentPage} von ${totalPages}</p>
+    <div class="pagination-btns">
+      <button class="page-btn" id="prevPage" ${currentPage<=1?'disabled':''}>‹</button>
+      ${Array.from({length: totalPages}, (_, i) => `<button class="page-btn ${i+1===currentPage?'active':''}" data-page="${i+1}">${i+1}</button>`).join('')}
+      <button class="page-btn" id="nextPage" ${currentPage>=totalPages?'disabled':''}>›</button>
+    </div>`;
+  pag.querySelector('#prevPage')?.addEventListener('click', () => { currentPage--; renderTable(); });
+  pag.querySelector('#nextPage')?.addEventListener('click', () => { currentPage++; renderTable(); });
+  pag.querySelectorAll('[data-page]').forEach(btn => {
+    btn.addEventListener('click', () => { currentPage = parseInt(btn.dataset.page); renderTable(); });
+  });
+
+  // Sort-Header
+  document.querySelectorAll('.data-table th[data-sort]').forEach(th => {
+    th.classList.toggle('sorted', th.dataset.sort === tableSortCol);
+    th.onclick = () => {
+      if (tableSortCol === th.dataset.sort) { tableSortDir *= -1; }
+      else { tableSortCol = th.dataset.sort; tableSortDir = 1; }
+      currentPage = 1;
+      renderTable();
+    };
+  });
+}
+
+function renderActivity() {
+  const el = document.getElementById('activityLog');
+  if (!activityLog.length) {
+    el.innerHTML = '<div class="box"><p class="muted" style="font-size:.875rem;">Noch keine Aktivitäten in dieser Sitzung.</p></div>';
+    return;
+  }
+  const typeLabel = { create: 'Erstellt', update: 'Bearbeitet', delete: 'Gelöscht' };
+  el.innerHTML = `<div class="activity-list">${activityLog.map(entry => {
+    const date = new Date(entry.time);
+    const timeStr = date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
+    return `<div class="activity-item">
+      <div class="activity-dot ${entry.type}"></div>
+      <div class="activity-text"><strong>${typeLabel[entry.type]||entry.type}:</strong> ${entry.title}</div>
+      <div class="activity-time">${timeStr}</div>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+// ── Modal ─────────────────────────────────────────────────
+function openEditModal(id) {
+  const card = id ? cards.find(c => c.id === id) : null;
+  editMode = card ? 'edit' : 'create';
+  document.getElementById('modalTitle').textContent = card ? 'Karte bearbeiten' : 'Neue Karte';
+  document.getElementById('editId').value = card ? card.id : '';
+  document.getElementById('editTitle').value = card ? card.title || '' : '';
+  document.getElementById('editSubtitle').value = card ? card.subtitle || '' : '';
+  document.getElementById('editAuthors').value = card ? (Array.isArray(card.authors) ? card.authors.join(', ') : card.authors || '') : '';
+  document.getElementById('editUrl').value = card ? card.url || '' : '';
+  document.getElementById('editTag').value = card ? card.tag || '' : '';
+  document.getElementById('editPage').value = card ? card.page || 'home' : 'home';
+  document.getElementById('editStatus').value = card ? card.status || 'in_arbeit' : 'in_arbeit';
+  document.getElementById('editImageUrl').value = card ? card.image_url || '' : '';
+  document.getElementById('editPublished').checked = card ? card.is_published !== false : true;
+  document.getElementById('cardModal').classList.add('open');
+}
+
+function closeModal() { document.getElementById('cardModal').classList.remove('open'); }
+
+function openDeleteModal(id) {
+  const card = cards.find(c => c.id === id);
+  if (!card) return;
+  deleteTargetId = id;
+  document.getElementById('deleteCardTitle').textContent = card.title || '(kein Titel)';
+  document.getElementById('deleteModal').classList.add('open');
+}
+
+function closeDeleteModal() { document.getElementById('deleteModal').classList.remove('open'); deleteTargetId = null; }
+
+// ── CSV Export ────────────────────────────────────────────
+function exportCSV() {
+  const headers = ['id', 'title', 'subtitle', 'authors', 'url', 'page', 'tag', 'status', 'is_published'];
+  const rows = cards.map(c =>
+    headers.map(h => JSON.stringify(c[h] ?? '')).join(',')
+  );
+  const csv = [headers.join(','), ...rows].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `oberstufe-cards-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  window.showToast('CSV wurde heruntergeladen!', 'success');
+}
+
+// ── Events ────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadCards();
+
+  // Navigation
+  document.querySelectorAll('.admin-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelectorAll('.admin-nav-link').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      const view = link.dataset.view;
+      document.querySelectorAll('[id^="view-"]').forEach(el => el.style.display = 'none');
+      document.getElementById(`view-${view}`).style.display = '';
+    });
+  });
+
+  // Add buttons
+  ['addCardBtn', 'dashAddBtn'].forEach(id => {
+    document.getElementById(id)?.addEventListener('click', () => openEditModal(null));
+  });
+
+  // See all
+  document.getElementById('seeAllBtn')?.addEventListener('click', () => {
+    document.querySelector('[data-view="cards"]').click();
+  });
+
+  // Export
+  document.getElementById('exportBtn')?.addEventListener('click', exportCSV);
+
+  // Clear log
+  document.getElementById('clearLogBtn')?.addEventListener('click', () => {
+    activityLog = [];
+    localStorage.removeItem('admin_activity');
+    renderActivity();
+    window.showToast('Aktivitätslog geleert.', 'success');
+  });
+
+  // Search & Filter
+  let searchTimer;
+  document.getElementById('tableSearch')?.addEventListener('input', (e) => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => { tableQuery = e.target.value.trim(); currentPage = 1; renderTable(); }, 200);
+  });
+  document.getElementById('pageFilter')?.addEventListener('change', (e) => {
+    tablePageFilter = e.target.value; currentPage = 1; renderTable();
+  });
+  document.getElementById('statusFilter')?.addEventListener('change', (e) => {
+    tableStatusFilter = e.target.value; currentPage = 1; renderTable();
+  });
+
+  // Modal Close
+  document.getElementById('modalClose')?.addEventListener('click', closeModal);
+  document.getElementById('modalCancel')?.addEventListener('click', closeModal);
+  document.getElementById('cardModal')?.addEventListener('click', (e) => { if (e.target.classList.contains('modal-backdrop') || e.target.id === 'cardModal') closeModal(); });
+
+  // Modal Save
+  document.getElementById('modalSave')?.addEventListener('click', () => {
+    const title = document.getElementById('editTitle').value.trim();
+    const url = document.getElementById('editUrl').value.trim();
+    if (!title || !url) { window.showToast('Titel und URL sind Pflichtfelder!', 'error'); return; }
+
+    const id = document.getElementById('editId').value || 'card-' + Date.now();
+    const card = {
+      id,
+      title,
+      subtitle: document.getElementById('editSubtitle').value.trim(),
+      authors: document.getElementById('editAuthors').value.trim(),
+      url,
+      tag: document.getElementById('editTag').value,
+      page: document.getElementById('editPage').value,
+      status: document.getElementById('editStatus').value,
+      image_url: document.getElementById('editImageUrl').value.trim() || undefined,
+      is_published: document.getElementById('editPublished').checked,
+      created_at: editMode === 'create' ? new Date().toISOString() : (cards.find(c => c.id === id)?.created_at || new Date().toISOString())
+    };
+
+    if (editMode === 'create') {
+      cards.push(card);
+      logActivity('create', card);
+      window.showToast(`„${title}" wurde erstellt!`, 'success');
+    } else {
+      const idx = cards.findIndex(c => c.id === id);
+      if (idx >= 0) cards[idx] = card;
+      logActivity('update', card);
+      window.showToast(`„${title}" wurde aktualisiert!`, 'success');
+    }
+
+    saveCards();
+    closeModal();
+    renderAll();
+  });
+
+  // Delete Modal
+  document.getElementById('deleteModalClose')?.addEventListener('click', closeDeleteModal);
+  document.getElementById('deleteCancelBtn')?.addEventListener('click', closeDeleteModal);
+  document.getElementById('deleteModal')?.addEventListener('click', (e) => { if (e.target.id === 'deleteModal') closeDeleteModal(); });
+  document.getElementById('deleteConfirmBtn')?.addEventListener('click', () => {
+    if (!deleteTargetId) return;
+    const card = cards.find(c => c.id === deleteTargetId);
+    cards = cards.filter(c => c.id !== deleteTargetId);
+    saveCards();
+    if (card) { logActivity('delete', card); window.showToast(`„${card.title}" gelöscht.`, 'error'); }
+    closeDeleteModal();
+    renderAll();
+  });
+});
+</script>
+
+</body>
+</html>
