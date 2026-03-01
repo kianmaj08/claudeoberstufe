@@ -1,0 +1,93 @@
+{
+  "cards": [
+    {
+      "authors": "Ein Projekt von Kian, Basit und Kamil.",
+      "created_at": "2025-09-29T01:18:00+02:00",
+      "url": "https://philexikonx.netlify.app/",
+      "page": "home",
+      "status": "in_arbeit",
+      "subtitle": "Ein Lexikon für bekannte Philosophen.",
+      "title": "Philexikon",
+      "is_published": true,
+      "type": "website",
+      "tag": "philosophie",
+      "id": "Philexikon1244"
+    },
+    {
+      "authors": "Ein Projekt von Kian, Basit und Mark.",
+      "url": "https://pieterbruegelx.netlify.app/",
+      "page": "home",
+      "status": "in_arbeit",
+      "subtitle": "Biografie, Kunstwerke und Hintergründe des Renaissance- Künstlers",
+      "title": "Pieter Bruegel",
+      "is_published": true,
+      "type": "website",
+      "tag": "kunst",
+      "id": "Pieterbruegel"
+    },
+    {
+      "authors": "Ein Projekt von Kian, Till, Mark und Danush.",
+      "url": "https://wienerkongress.vercel.app/",
+      "page": "home",
+      "status": "fertig",
+      "subtitle": "Ein kurzer Überblick zum Wiener Kongress",
+      "title": "Wiener Kongress",
+      "is_published": true,
+      "type": "website",
+      "tag": "geschichte",
+      "id": "Wienerkongress"
+    },
+    {
+      "url": "https://stochastosinox.netlify.app/#",
+      "page": "home",
+      "status": "in_arbeit",
+      "subtitle": "Stochastik basierte Mathematik Spiele",
+      "title": "Stochastosino Beta",
+      "is_published": true,
+      "type": "website",
+      "tag": "informatik",
+      "id": "Stochastosino"
+    },
+    {
+      "url": "https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/9acebe6b9610174b979cc5303462dd81/73790f78-a61c-451b-9a21-5cb77b830f76/index.html",
+      "page": "home",
+      "status": "test",
+      "subtitle": "(Claude Labs Test)",
+      "title": "Ai World ",
+      "is_published": true,
+      "type": "website",
+      "tag": "informatik",
+      "id": "aiworld"
+    },
+    {
+      "page": "home",
+      "status": "fertig",
+      "is_published": true,
+      "id": "huecoai",
+      "title": "HuecoAI",
+      "subtitle": "HuecoAI - Mundo Chatbot 1.0",
+      "authors": "Kian",
+      "url": "https://huecoai.de/"
+    },
+    {
+      "page": "home",
+      "status": "test",
+      "is_published": true,
+      "id": "fgsg",
+      "title": "GEGNews",
+      "subtitle": "Demo Version",
+      "url": "https://gegnews.vercel.app/",
+      "created_at": "2026-01-18T04:34:00+01:00"
+    },
+    {
+      "page": "home",
+      "status": "fertig",
+      "is_published": true,
+      "id": "Geschichte1848",
+      "title": "1848 Aus der Sicht von anderen Ländern",
+      "authors": "Kian, Danush, Mark, Simon und Till",
+      "url": "https://die1848revolution.lovable.app/",
+      "tag": "geschichte"
+    }
+  ]
+}
